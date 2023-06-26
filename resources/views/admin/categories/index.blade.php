@@ -6,11 +6,11 @@
                 <div class="card-header">
                     <div class="row d-flex align-items-center justify-centent-center">
                         <div class="col-6">
-                            <h4 class="mb-0">Events</h4>
+                            <h4 class="mb-0">Categories</h4>
                         </div>
                         <div class="col-6 text-end">
 
-                            <a href="{{ route('events.create') }}" class="btn btn-primary">
+                            <a href="{{ route('categories.create') }}" class="btn btn-primary">
                                 Create
                             </a>
                         </div>
@@ -24,30 +24,24 @@
                     <table class="table table-bordered responsive display nowrap table-hover" id="example">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Date</th>
-                                <th>Liaison</th>
+                                <th>Category Name</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $event->title }}</td>
-                                    <td>{{ $event->category->name }}</td>
-                                    <td>{{ $event->date }}</td>
-                                    <td>{{ $event->liaison->name }}</td>
+                                    <td>{{ $category->name }}</td>
                                     <td class="text-center">
                                         <button class="btn p-0" type="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class="fas fa-cogs"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('events.edit', $event) }}" class="dropdown-item">
+                                            <a href="{{ route('categories.edit', $category) }}" class="dropdown-item">
                                                 Edit
                                             </a>
-                                            <a href="{{ route('events.destroy', $event) }}" class="dropdown-item"
+                                            <a href="{{ route('categories.destroy', $category) }}" class="dropdown-item"
                                                 data-confirm-delete="true">
                                                 Delete
                                             </a>

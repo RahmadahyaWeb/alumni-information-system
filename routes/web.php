@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumnusController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\JobController;
@@ -76,6 +77,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
     // route events
     Route::resource('/events', EventController::class);
+    // route categories
+    Route::resource('/categories', CategoryController::class);
     // route users
     Route::resource('/users', UserController::class);
 });

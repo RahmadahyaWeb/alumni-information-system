@@ -56,14 +56,14 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data master events</span>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('events.index') }}" class="menu-link {{ Request::is('events*') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::is('events*') ? 'active' : '' }}">
+            <a href="{{ route('events.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div>Events</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link ">
+        <li class="menu-item {{ Request::is('categories*') ? 'active' : '' }}">
+            <a href="{{ route('categories.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div>Categories</div>
             </a>

@@ -12,6 +12,11 @@ class Event extends Model
 
     public function liaison()
     {
-        return $this->hasMany(Liaison::class);
+        return $this->belongsTo(Liaison::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
