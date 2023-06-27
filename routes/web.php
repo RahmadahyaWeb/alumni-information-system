@@ -13,11 +13,9 @@ use App\Http\Controllers\UserController;
 use App\Models\Alumnus;
 use App\Models\Departement;
 use App\Models\Liaison;
-use App\Models\Study;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\Framework\MockObject\Builder\Stub;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +28,13 @@ use PHPUnit\Framework\MockObject\Builder\Stub;
 |
 */
 
+Route::get('/', function () {
+    return view('frontend.app');
+});
+
 Route::middleware(['auth', 'admin'])->group(function () {
     // route dashboard
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         $departements = Departement::with('study')->withCount([
             'alumnus',
             'study',
@@ -50,7 +52,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
             ->groupBy('departements.name')
             ->get();
 
-        return view('dashboard', [
+        return view('admin.dashboard', [
             'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->get(),
             'departements' => $departements,
             'liaisons' => Liaison::get(),
@@ -58,8 +60,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         ]);
     });
-
-
     // route liaisons
     Route::resource('/liaisons', LiaisonController::class);
     // route departements

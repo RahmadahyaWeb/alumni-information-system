@@ -13,8 +13,8 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item {{ Request::is('/') ? 'active' : '' }}">
-            <a href="/" class="menu-link ">
+        <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+            <a href="/dashboard" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div>Dashboard</div>
             </a>
@@ -25,7 +25,7 @@
         </li>
         <li class="menu-item {{ Request::is('alumni*') ? 'active' : '' }}">
             <a href="{{ route('alumni.index') }}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-user"></i>
+                <i class="menu-icon tf-icons bx bxs-graduation"></i>
                 <div>Alumni</div>
             </a>
         </li>
@@ -51,6 +51,12 @@
             <a href="{{ route('departements.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div>Departements</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxs-user-account"></i>
+                <div>Alumni account</div>
             </a>
         </li>
         <li class="menu-header small text-uppercase">

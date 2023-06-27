@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index',[
+        return view('admin.users.index', [
             'users' => User::with('alumnus')->get()->except(1)
         ]);
     }
@@ -80,7 +80,7 @@ class UserController extends Controller
         ]);
 
         $user->update(['password' => Hash::make($request->password)]);
-        return redirect()->route('users.index')->with('success','Password was changed!');
+        return redirect()->route('users.index')->with('success', 'Password was changed!');
     }
 
     /**

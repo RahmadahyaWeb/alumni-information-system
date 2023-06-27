@@ -1,40 +1,36 @@
 @extends('layouts.app')
-@section('header', 'Users')
-@section('breadcrumbs')
-    <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item">Users</li>
-            <li class="breadcrumb-item active">Create</li>
-        </ol>
-    </div>
-@endsection
 @section('content')
-    <div class="col-12">
-        <div class="card card-dark card-outline shadow-sm">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
             <div class="card-header">
-                Form create user
+                Form create alumni account
             </div>
             <div class="card-body">
                 <form action="{{ route('users.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <label for="alumnus_id" class="form-label">Alumnus</label>
-                            <select id="alumnus_id" class="form-control custom-select select2" name="alumnus_id">
-                                <option selected disabled>Select alumnus</option>
-                                @foreach ($alumni as $alumnus)
-                                    <option value="{{ $alumnus->id }}" @selected(old('alumnus_id') == $alumnus->id)>{{ $alumnus->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('alumnus_id')
-                                <div class="mt-2 text-danger">
-                                    <span>{{ $message }}</span>
-                                </div>
-                            @enderror
+                            <div class="col-12 mb-3">
+                                <label for="alumnus_id" class="form-label">Alumnus</label>
+                                <select id="alumnus_id" class="form-select" name="alumnus_id">
+                                    <option selected disabled>Select alumnus</option>
+                                    @foreach ($alumni as $alumnus)
+                                        <option value="{{ $alumnus->id }}" @selected(old('alumnus_id') == $alumnus->id)>
+                                            {{ $alumnus->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('alumnus_id')
+                                    <div class="mt-2 text-danger">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <button type="submit" class="btn btn-primary btn-block">Save</button>
+                        <div class="col-12 d-md-flex justify-content-end">
+                            <div class="mb-3 d-grid d-md-block">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
                         </div>
                     </div>
                 </form>

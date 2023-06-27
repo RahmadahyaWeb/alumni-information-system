@@ -49,28 +49,30 @@
                     Departements by gender
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Departement</th>
-                                <th>Study</th>
-                                <th>Male</th>
-                                <th>Female</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($departements as $departement)
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-sm ">
+                            <thead>
                                 <tr>
-                                    <td>{{ $departement->name }}</td>
-                                    <td>{{ $departement->study->count() }}</td>
-                                    <td>{{ $departement->male }}</td>
-                                    <td>{{ $departement->female }}</td>
-                                    <td>{{ $departement->alumnus_count }}</td>
+                                    <th>Departement</th>
+                                    <th>Study</th>
+                                    <th>Male</th>
+                                    <th>Female</th>
+                                    <th>Total</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($departements as $departement)
+                                    <tr>
+                                        <td>{{ $departement->name }}</td>
+                                        <td>{{ $departement->study->count() }}</td>
+                                        <td>{{ $departement->male }}</td>
+                                        <td>{{ $departement->female }}</td>
+                                        <td>{{ $departement->alumnus_count }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,24 +84,26 @@
                     Departements by GPA
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Departement</th>
-                                <th>Highest GPA</th>
-                                <th>GPA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($gpas_departement as $departement)
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-sm">
+                            <thead>
                                 <tr>
-                                    <td>{{ $departement->name }}</td>
-                                    <td>{{ $departement->max_gpa }}</td>
-                                    <td>{{ number_format($departement->avg_gpa, 2) }}</td>
+                                    <th>Departement</th>
+                                    <th>Highest GPA</th>
+                                    <th>GPA</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($gpas_departement as $departement)
+                                    <tr>
+                                        <td>{{ $departement->name }}</td>
+                                        <td>{{ $departement->max_gpa }}</td>
+                                        <td>{{ number_format($departement->avg_gpa, 2) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
