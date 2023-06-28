@@ -55,6 +55,7 @@
 }
 
 body{
+    height: 5000px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -71,25 +72,71 @@ body{
 
 /* navbar */
 
+@media only screen and (min-width: 769px) {
+    /* For desktop: */
+    a.nav-link{
+        margin-right: 30px;
+    }
+}
 
 .navbar-toggler{
     border: none !important;
     padding: 0;
 }
 
-a.nav-link{
-    margin-right: 30px;
+.navbar{
+    background-color: #F8F9FA;
+    transition: all 0.5s;
+}
+
+.show {
+    transition: all 0.5s;
+
+}
+
+.collapsing {
+    transition: all 0.5s;
+}
+
+.collapsed {
+    transition: all 0.5s;
+}
+
+.navbar-scrolled{
+    background-color: #F8F9FA;
+    opacity: 90%;
 }
 
 /* hero */
+section.hero{
+    width: 100%;
+    height: 80vh;
+}
+
 @media only screen and (max-width: 768px) {
     /* For desktop: */
     .svg-illustration svg{
         width: 100%;
     }
+    .svg-icon svg{
+        width: 30%;
+    }
 
   }
 
+/* card */
+.card{
+/* border: none; */
+}
+
+.card .card-footer{
+    background-color: white;
+}
+
+/* section */
+section#about,section#event, section#summary, section#alumni{
+    padding-top: 7rem;
+}
 
 
 

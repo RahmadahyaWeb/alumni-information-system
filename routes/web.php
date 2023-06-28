@@ -12,10 +12,13 @@ use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserController;
 use App\Models\Alumnus;
 use App\Models\Departement;
+use App\Models\Event;
 use App\Models\Liaison;
+use App\Models\Study;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.app');
+    $departements = Departement::with('study')->withCount([
+        'alumnus',
+        'study',
+        'alumnus as female' => function (Builder $query) {
+            $query->where('gender', 'female');
+        },
+        'alumnus as male' => function (Builder $query) {
+            $query->where('gender', 'male');
+        },
+    ])->get();
+    return view('frontend.app', [
+        'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->latest()->paginate(1),
+        'departements' => $departements,
+        'studies' => Study::all(),
+        'events' => Event::all()
+    ]);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
