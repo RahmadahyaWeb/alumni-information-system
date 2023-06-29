@@ -34,4 +34,9 @@ class Alumnus extends Model
     {
         return $this->belongsTo(Liaison::class);
     }
+
+    public function event()
+    {
+        return $this->belongsToMany(Event::class);
+    }
 }

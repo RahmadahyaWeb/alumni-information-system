@@ -12,7 +12,8 @@
                         <div class="col-12 mb-3">
                             <label for="type_of_job" class="form-label">Type of job</label>
                             <input type="text" class="form-control @error('type_of_job') is-invalid @enderror"
-                                id="type_of_job"type_of_job value="{{ old('type_of_job') }}" placeholder="Type of job">
+                                id="type_of_job"type_of_job value="{{ old('type_of_job') }}" placeholder="Type of job"
+                                name="type_of_job">
                             @error('type_of_job')
                                 <div class="invalid-feedback">
                                     {{ $message }}

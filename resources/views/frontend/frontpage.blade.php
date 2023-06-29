@@ -1,60 +1,6 @@
-<!doctype html>
-<html lang="en">
+@extends('frontend.layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Poliban | Alumni</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('sisami/favicon.ico') }}" />
-
-    {{-- bootstrap --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {{-- aos --}}
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    {{-- box icons --}}
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {{-- dark mode js --}}
-    <script src="{{ asset('js/color-modes.js') }}"></script>
-    <!-- Boxicons CSS -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-</head>
-
-<body class="bg-body-tertiary" data-bs-theme="light" data-bs-spy="scroll" data-bs-target="#navbar">
-
-    {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg p-md-4 sticky-top" id="navbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="{{ asset('sisami/android-chrome-512x512.png') }}" alt="" width="50px">
-                <strong class="ms-2 fs-3">Sisami</strong>
-            </a>
-            <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"
-                    style="fill: rgba(105, 108, 255, 1);transform: ;msFilter:;">
-                    <path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z"></path>
-                </svg>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto text-center">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#about">About</a>
-                    <a class="nav-link" href="#summary">Summary</a>
-                    <a class="nav-link" href="#event">Events</a>
-                    <a class="nav-link" href="#alumni">Alumni</a>
-                    <a class="nav-link disabled">Job Vacancies</a>
-                    <a href="/login" class="btn btn-primary">Login</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-
+@section('content')
     {{-- hero --}}
     <section class="hero mt-5">
         <div class="container">
@@ -74,8 +20,7 @@
                                 d="M763.78,442.23s-7.51,43.62-65.94,87.54c-6.29,4.74-13.17,9.47-20.7,14.14q-4.6,2.88-9.55,5.72c-44.51,25.57-109.34,48.94-203.6,61,0,0-193.28,29.81-305.48-113.4l-20.28-26.4c-102.39-160.08,37.53-288.5,37.53-288.5C242.49,112.57,300.83,78.5,343,61.88c7.06-2.77,13.66-5.06,19.78-6.94,27.4-8.46,45-8.81,49.54-8.74.85,0,1.69,0,2.52,0,8.66-.09,57.35.28,108.17,19.26,5.14,1.9,10.31,4,15.45,6.34,1.3.58,2.61,1.18,3.91,1.8.95.45,1.92.91,2.87,1.39,2.19,1.07,4.38,2.17,6.54,3.32C581.3,94,609.08,117.2,627.45,151.7A58.33,58.33,0,0,1,630.19,162,125.48,125.48,0,0,1,632,177.16q.21,3.27.29,7c.25,12.55-.84,28.79-4.88,48.8,0,0-11.69,44.56,9.55,74.52a56,56,0,0,0,16,15.13l1.17.72s5.12,2.21,13.16,6.26l.22.11c2.85,1.45,6.07,3.12,9.55,5,6.24,3.38,13.32,7.47,20.7,12.17C732.07,368.61,772.57,403.34,763.78,442.23Z"
                                 fill="#fff" opacity="0.7" />
                             <path d="M653,322.59H362.77V307.46H637A56,56,0,0,0,653,322.59Z" fill="#e6e6e6" />
-                            <path d="M667.37,329.57H362.77v-7H653l1.17.72S659.33,325.52,667.37,329.57Z"
-                                fill="#fff" />
+                            <path d="M667.37,329.57H362.77v-7H653l1.17.72S659.33,325.52,667.37,329.57Z" fill="#fff" />
                             <path d="M632,177.16H362.77V162H630.19A125.48,125.48,0,0,1,632,177.16Z" fill="#e6e6e6" />
                             <path d="M632.33,184.14H362.77v-7H632Q632.25,180.43,632.33,184.14Z" fill="#fff" />
                             <path d="M362.77,54.94V523.86H343v-462C350.05,59.11,356.65,56.82,362.77,54.94Z"
@@ -148,8 +93,7 @@
                             <path
                                 d="M614.42,259.05V480.44a13.67,13.67,0,0,1-13.66,13.67h-9l1.19-.29a20.76,20.76,0,0,0,15.25-20.19V269.39c-.9-21.88-16.44-24-16.44-24h9A13.66,13.66,0,0,1,614.42,259.05Z"
                                 opacity="0.05" />
-                            <path
-                                d="M279.21,330.28l-.19,0-61-14.44,43-8.8h67.73ZM223,315.88l56.09,13.27L324,308.07h-62.9Z"
+                            <path d="M279.21,330.28l-.19,0-61-14.44,43-8.8h67.73ZM223,315.88l56.09,13.27L324,308.07h-62.9Z"
                                 fill="gray" />
                             <path
                                 d="M220.69,316.35l-.34-1c2.33-.85,29.22-32.92,46.73-54.27l.33-.4,59.28,46.46L326,308l-58.45-45.82C261.76,269.23,223.88,315.28,220.69,316.35Z"
@@ -347,8 +291,7 @@
                             <polygon
                                 points="604.84 506.46 610.95 499.11 620.24 501.29 608.85 467.35 593.45 472.52 604.84 506.46"
                                 fill="#2f2e41" />
-                            <polygon points="599.11 489.35 593.45 472.52 608.85 467.35 599.11 489.35"
-                                opacity="0.2" />
+                            <polygon points="599.11 489.35 593.45 472.52 608.85 467.35 599.11 489.35" opacity="0.2" />
                             <polygon points="606.86 468.02 617.83 500.72 618.17 500.8 607.14 467.93 606.86 468.02"
                                 fill="#fff" />
                             <polygon points="595.16 471.94 606.19 504.82 606.42 504.55 595.45 471.85 595.16 471.94"
@@ -379,8 +322,7 @@
                                 fill="#f7a48b" />
                             <path d="M599.32,395.11a52.46,52.46,0,0,1-15.17,0,52.46,52.46,0,0,1,15.17,0Z"
                                 fill="#f7a48b" />
-                            <path d="M585.56,407.68a43.21,43.21,0,0,1,13.76,0,43.5,43.5,0,0,1-13.76,0Z"
-                                fill="#f7a48b" />
+                            <path d="M585.56,407.68a43.21,43.21,0,0,1,13.76,0,43.5,43.5,0,0,1-13.76,0Z" fill="#f7a48b" />
                             <line x1="585.86" y1="590.35" x2="596.03" y2="590.85" fill="none"
                                 stroke="red" stroke-miterlimit="10" stroke-width="0.25" />
                             <polygon points="503.84 561.13 503.84 579.66 619.65 585.95 619.04 558.89 503.84 561.13"
@@ -389,16 +331,14 @@
                                 fill="#ccc" />
                             <polygon points="496.26 585.95 497.69 601.58 619.04 610.29 619.65 592 496.26 585.95"
                                 fill="#b3b3b3" />
-                            <path
-                                d="M468.26,537.51l82.26,12.82,72.11-10-38.35-10-116,7.12S468.23,537.51,468.26,537.51Z"
+                            <path d="M468.26,537.51l82.26,12.82,72.11-10-38.35-10-116,7.12S468.23,537.51,468.26,537.51Z"
                                 fill="#2f2e41" />
                             <polygon points="549.09 568.88 465.8 554.61 468.26 537.51 550.51 550.33 549.09 568.88"
                                 fill="#fff" />
                             <path
                                 d="M545.44,556.58h-.11L469,545.32a.73.73,0,0,1-.6-.81.71.71,0,0,1,.81-.6l76.3,11.25a.71.71,0,0,1-.1,1.42Z"
                                 fill="#e6e6e6" />
-                            <path
-                                d="M544.81,562.46h-.14L469,548.29a.71.71,0,1,1,.26-1.4L544.94,561a.72.72,0,0,1-.13,1.42Z"
+                            <path d="M544.81,562.46h-.14L469,548.29a.71.71,0,1,1,.26-1.4L544.94,561a.72.72,0,0,1-.13,1.42Z"
                                 fill="#e6e6e6" />
                             <polygon points="463.43 504.64 497.69 530.34 612.92 523.48 580.5 501.79 463.43 504.64"
                                 fill="#5d6166" />
@@ -468,8 +408,7 @@
                             <path
                                 d="M672.58,594.58h-.13l-10.29-1.86a.72.72,0,0,1,.25-1.41l10.3,1.87a.72.72,0,0,1,.57.83A.71.71,0,0,1,672.58,594.58Z"
                                 fill="#696cff" />
-                            <path
-                                d="M596.92,590.3h-.13l-10.3-1.87a.71.71,0,0,1,.26-1.4L597,588.88a.72.72,0,0,1-.12,1.42Z"
+                            <path d="M596.92,590.3h-.13l-10.3-1.87a.71.71,0,0,1,.26-1.4L597,588.88a.72.72,0,0,1-.12,1.42Z"
                                 fill="#696cff" />
                             <path
                                 d="M600.2,573.42a.71.71,0,0,1-.41-.13l-8.33-5.83a.7.7,0,0,1-.18-1,.71.71,0,0,1,1-.18l8.34,5.83a.71.71,0,0,1-.41,1.3Z"
@@ -496,8 +435,7 @@
                                 <path
                                     d="M661.34,618a.71.71,0,0,1-.53-.24l-6.24-6.93a.71.71,0,0,1,1.06-1l6.24,6.93a.71.71,0,0,1-.53,1.19Z"
                                     fill="#fff" />
-                                <path
-                                    d="M659.73,574.6a.72.72,0,0,1-.15-1.42l10.59-2.35a.71.71,0,1,1,.3,1.39l-10.58,2.36Z"
+                                <path d="M659.73,574.6a.72.72,0,0,1-.15-1.42l10.59-2.35a.71.71,0,1,1,.3,1.39l-10.58,2.36Z"
                                     fill="#fff" />
                                 <path
                                     d="M672.58,594.58h-.13l-10.29-1.86a.72.72,0,0,1,.25-1.41l10.3,1.87a.72.72,0,0,1,.57.83A.71.71,0,0,1,672.58,594.58Z"
@@ -606,8 +544,6 @@
             </div>
         </div>
     </section>
-
-
 
     {{-- about --}}
     <section class="mb-5" id="about">
@@ -796,63 +732,48 @@
                             <path
                                 d="M704.78,624.17s-2.19,3.71,2.19,3.2l13.81-2a3.22,3.22,0,0,0,2.61-2.27l2.79-9.36,2.14,9.23a1.2,1.2,0,0,0,1.16.92h0a1.19,1.19,0,0,0,1.18-1.26c-.23-3.59-1.08-13.82-3.65-17.67a1.11,1.11,0,0,0-1.66-.21l-1.08,1a4.1,4.1,0,0,1-3.4,1l-3.35-.55a1.1,1.1,0,0,0-1.28,1l-.37,6.87a5.25,5.25,0,0,1-2.25,4Z"
                                 fill="#696cff" />
-                            <rect x="520.12" y="54.74" width="1.31" height="45.68"
-                                fill="#e1e1e1" />
+                            <rect x="520.12" y="54.74" width="1.31" height="45.68" fill="#e1e1e1" />
                             <path
                                 d="M520.76,199.3l-25.52-25.6V124.63l25.52-25.14L545.86,125V173.7Zm-24.21-26.14,24.2,24.28,23.8-24.27V125.51l-23.8-24.17-24.2,23.84Z"
                                 fill="#e1e1e1" />
                             <path
                                 d="M520.55,198.16l-13.4-24.33V125.41l13.4-24.33,13.29,24.33v48.41Zm-12.09-24.67,12.09,21.95,12-21.95V125.75l-12-22-12.09,22Z"
                                 fill="#e1e1e1" />
-                            <rect x="495.89" y="124.25" width="49.31" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="495.89" y="172.78" width="49.31" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="569.58" y="241.7" width="49.31" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="603.87" y="275.15" width="9.38" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="641.76" y="275.15" width="9.38" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="593.42" y="54.74" width="1.31" height="212.16"
-                                fill="#e1e1e1" />
+                            <rect x="495.89" y="124.25" width="49.31" height="1.31" fill="#e1e1e1" />
+                            <rect x="495.89" y="172.78" width="49.31" height="1.31" fill="#e1e1e1" />
+                            <rect x="569.58" y="241.7" width="49.31" height="1.31" fill="#e1e1e1" />
+                            <rect x="603.87" y="275.15" width="9.38" height="1.31" fill="#e1e1e1" />
+                            <rect x="641.76" y="275.15" width="9.38" height="1.31" fill="#e1e1e1" />
+                            <rect x="593.42" y="54.74" width="1.31" height="212.16" fill="#e1e1e1" />
                             <path
                                 d="M594.07,267.94l-25.58-25.59,25.58-25.58,25.59,25.58Zm-23.73-25.59,23.73,23.74,23.74-23.74-23.74-23.73Z"
                                 fill="#e1e1e1" />
-                            <rect x="626.74" y="55.26" width="1.31" height="244.25"
-                                fill="#e1e1e1" />
+                            <rect x="626.74" y="55.26" width="1.31" height="244.25" fill="#e1e1e1" />
                             <path
                                 d="M627.44,300.44l-24.63-24.63,24.63-24.63,24.63,24.63Zm-22.78-24.63,22.78,22.77,22.77-22.77L627.44,253Z"
                                 fill="#e1e1e1" />
                             <path
                                 d="M627.53,291.18l-15.37-15.37,15.37-15.37,15.37,15.37ZM614,275.81l13.52,13.52,13.52-13.52-13.52-13.52Z"
                                 fill="#e1e1e1" />
-                            <rect x="636.31" y="241.64" width="49.31" height="1.31"
-                                fill="#e1e1e1" />
-                            <rect x="660.14" y="54.68" width="1.31" height="212.16"
-                                fill="#e1e1e1" />
+                            <rect x="636.31" y="241.64" width="49.31" height="1.31" fill="#e1e1e1" />
+                            <rect x="660.14" y="54.68" width="1.31" height="212.16" fill="#e1e1e1" />
                             <path
                                 d="M660.8,267.88l-25.59-25.59,25.59-25.58,25.59,25.58Zm-23.73-25.59L660.8,266l23.73-23.74L660.8,218.56Z"
                                 fill="#e1e1e1" />
-                            <rect x="710.69" y="54.74" width="1.31" height="55.79"
-                                fill="#e1e1e1" />
+                            <rect x="710.69" y="54.74" width="1.31" height="55.79" fill="#e1e1e1" />
                             <path d="M739.81,156.4H683.58l27.76-47.15Zm-53.94-1.31h51.62l-26.13-43.28Z"
                                 fill="#e1e1e1" />
-                            <path d="M721.59,156.4H701.28l10.06-49.11Zm-18.7-1.31H720l-8.62-41.33Z"
-                                fill="#e1e1e1" />
-                            <rect x="746.75" y="54.68" width="1.31" height="99.35"
-                                fill="#e1e1e1" />
+                            <path d="M721.59,156.4H701.28l10.06-49.11Zm-18.7-1.31H720l-8.62-41.33Z" fill="#e1e1e1" />
+                            <rect x="746.75" y="54.68" width="1.31" height="99.35" fill="#e1e1e1" />
                             <path d="M775.87,199.9H719.64l27.76-47.15Zm-53.94-1.31h51.61l-26.12-43.28Z"
                                 fill="#e1e1e1" />
-                            <path d="M757.65,199.9H737.34l10.06-49.11Zm-18.71-1.31H756l-8.63-41.33Z"
-                                fill="#e1e1e1" />
+                            <path d="M757.65,199.9H737.34l10.06-49.11Zm-18.71-1.31H756l-8.63-41.33Z" fill="#e1e1e1" />
                             <polygon points="127.38 520.91 132.92 530.99 141.84 530.99 138.55 515.19 127.38 520.91"
                                 fill="#f9b499" />
                             <path
                                 d="M127.38,540v-3.77a29.75,29.75,0,0,0,4.31-7.35,3.74,3.74,0,0,1,4.79-2.06c1.19.49,2.35,1.66,3,4.19,0,0,3.37-3.74,3.2,2.26V540Z"
                                 fill="#696cff" />
-                            <path d="M166.25,529.81a56.84,56.84,0,0,1,10.62-4.49l2.19,9.72-8.43,2.44Z"
-                                fill="#f9b499" />
+                            <path d="M166.25,529.81a56.84,56.84,0,0,1,10.62-4.49l2.19,9.72-8.43,2.44Z" fill="#f9b499" />
                             <path
                                 d="M158.16,534.19,162,540l3.2-.9V543l21.06,10.28a2.55,2.55,0,0,0,.14-.25,4.68,4.68,0,0,0-2.66-6.49,10.81,10.81,0,0,1-6.91-6.51,10.71,10.71,0,0,0-1.61-6.62,1.48,1.48,0,0,0-2.54.16c-.47,1-1.21,1.66-2.29.57a3.35,3.35,0,0,1-.79-1.35c-.42-1.26-1.71-4.4-4.32-4.38a3.31,3.31,0,0,0-2.29,1Z"
                                 fill="#696cff" />
@@ -960,7 +881,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <h3 class="text-center fw-bold">Poliban Alumni Summary</h3>
+                    <h3 class="text-center fw-bold">Alumni Summary</h3>
                 </div>
                 <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-duration="1100">
                     <div class="card shadow-sm">
@@ -990,8 +911,7 @@
                         <div class="card-body">
                             <div class="row d-flex justify-content-center align-items-center g-3">
                                 <div class="col-md-4 svg-icon text-center p-2">
-                                    <svg fill="#696cff" viewBox="0 0 1024 1024"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg fill="#696cff" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
 
                                         <g id="SVGRepo_bgCarrier" stroke-width="0" />
 
@@ -1025,8 +945,7 @@
                         <div class="card-body">
                             <div class="row d-flex justify-content-center align-items-center g-3">
                                 <div class="col-md-4 svg-icon text-center p-2">
-                                    <svg fill="#696cff" viewBox="0 0 1024 1024"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg fill="#696cff" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
 
                                         <g id="SVGRepo_bgCarrier" stroke-width="0" />
 
@@ -1159,49 +1078,6 @@
                 </div>
             </div>
         </div>
-
-    </section>
-
-    {{-- events --}}
-    <section id="event" class="mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <h3 class="text-center fw-bold">Alumni Events</h3>
-                </div>
-                @foreach ($events as $event)
-                    <div class="col-md-6">
-                        <div class="card mb-3 shadow-sm" data-aos="fade-up" data-aos-duration="1100">
-                            <img src="/storage/events/{{ $event->thumbnail }}" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $event->title }}</h5>
-                                <p class="card-text text-secondary">
-                                    {{ \Illuminate\Support\Carbon::parse($event->date)->format('d F Y') }},
-                                    {{ date('H:i', strtotime($event->time)) }} WITA.
-                                </p>
-                                <p class="card-text">
-                                    {{ $event->description }}
-                                </p>
-
-                                <span>Contact for more information:</span>
-                                <p class="card-text">
-                                    <span>{{ $event->liaison->name }}</span>
-                                    <a href="https://wa.me/+62{{ $event->liaison->phone_number }}">
-                                        {{ $event->liaison->phone_number }}
-                                    </a>
-                                </p>
-
-                            </div>
-                            <div class="card-footer text-secondary">
-                                Published
-                                {{ $event->updated_at->diffForHumans() }}
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
     </section>
 
     {{-- alumni --}}
@@ -1211,77 +1087,18 @@
                 <div class="col-12 mb-4">
                     <h3 class="text-center fw-bold">Meet Our Alumni</h3>
                 </div>
-
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach ($alumni as $alumnus)
-                    <div class="col">
-                        <div class="card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1100">
-                            <div class="d-flex justify-content-center mt-3">
-                                <img src="/storage/alumni/{{ $alumnus->photo }}"
-                                    class="card-img-top rounded-circle w-50 img-thumbnail"
-                                    style="aspect-ratio: 1 / 1; object-fit: cover; object-position: 25% 25%; "
-                                    alt="...">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title text-center">
-                                    <span class="fw-bold">
-                                        {{ $alumnus->name }}
-                                    </span>
-                                    <small>({{ $alumnus->liaison->class_of }})</small>
-                                </p>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><small>{{ $alumnus->departement->name }}</small>
-                                    </li>
-                                    <li class="list-group-item"><small>{{ $alumnus->study->name }}</small></li>
-                                    <li class="list-group-item"><small>{{ $alumnus->email }}</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-
-            <div class="col-12">
-                {{ $alumni->links() }}
-            </div>
+            @livewire('alumni-card')
         </div>
     </section>
 
+    {{-- events --}}
+    <section id="event" class="mb-5">
+        @livewire('event-card')
+    </section>
 
-    {{-- jquery --}}
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-        crossorigin="anonymous"></script>
-    {{-- bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
-    {{-- aos --}}
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-
-    <script>
-        window.onscroll = function() {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("navbar").classList.add('navbar-scrolled');
-            } else if (document.body.scrollTop < 20 || document.documentElement.scrollTop < 20) {
-                document.getElementById("navbar").classList.remove('navbar-scrolled');
-            }
-        }
-    </script>
-    <script>
-        var navbar = document.querySelector('#navbarNavAltMarkup');
-        $('.nav-link').on('click', function() {
-            navbar.classList.remove('show');
-        })
-    </script>
-</body>
-
-</html>
+    {{-- job vacancies --}}
+    <section class="mb-5" id="vacancy">
+        @livewire('vacancy-card')
+    </section>
+@endsection

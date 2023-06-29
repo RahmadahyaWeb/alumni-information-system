@@ -8,29 +8,21 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LiaisonController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VacancyController;
 use App\Models\Alumnus;
 use App\Models\Departement;
 use App\Models\Event;
 use App\Models\Liaison;
 use App\Models\Study;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// route frontpage
 Route::get('/', function () {
     $departements = Departement::with('study')->withCount([
         'alumnus',
@@ -42,14 +34,25 @@ Route::get('/', function () {
             $query->where('gender', 'male');
         },
     ])->get();
-    return view('frontend.app', [
-        'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->latest()->paginate(1),
+
+    return view('frontend.frontpage', [
+        'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->get(),
         'departements' => $departements,
         'studies' => Study::all(),
-        'events' => Event::all()
     ]);
 });
 
+// route show event
+Route::get('/event/{event:title}', function (Event $event) {
+    $events = Event::latest()->limit(3)->get()->except($event->id);
+    $total = DB::table('events')
+        ->join('alumnus_event', 'alumnus_event.event_id', '=', 'events.id')
+        ->where('events.id', '=', $event->id)
+        ->count('alumnus_event.alumnus_id');
+    return view('frontend.show-event', compact('event', 'events', 'total'));
+})->name('event.detail');
+
+// route admin only
 Route::middleware(['auth', 'admin'])->group(function () {
     // route dashboard
     Route::get('/dashboard', function () {
@@ -70,12 +73,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
             ->groupBy('departements.name')
             ->get();
 
+        $events = DB::table('events')
+            ->join('alumnus_event', 'alumnus_event.event_id', '=', 'events.id')
+            ->select('events.title', DB::raw('COUNT(*) as alumnus_count'))
+            ->where('status', 1)
+            ->groupBy('events.title')
+            ->get();
+
+
         return view('admin.dashboard', [
             'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->get(),
             'departements' => $departements,
             'liaisons' => Liaison::get(),
-            'gpas_departement' => $gpas_departement
-
+            'gpas_departement' => $gpas_departement,
+            'events' => $events
         ]);
     });
     // route liaisons
@@ -99,9 +110,41 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/categories', CategoryController::class);
     // route users
     Route::resource('/users', UserController::class);
+    // route vacancies
+    Route::resource('/vacancies', VacancyController::class);
 });
 
+// route user
 Route::middleware(['auth'])->group(function () {
+
+    // route join event
+    Route::get('/join/{id}', function ($id) {
+        $event = Event::find($id);
+        $event->alumnus()->attach(Auth::user()->alumnus->id);
+        return back()->with('success', 'Successfully joined the event');
+    })->name('join');
+
+    // route unjoin event
+    Route::get('/unjoin/{id}', function ($id) {
+        $event = Event::find($id);
+        $event->alumnus()->detach(Auth::user()->alumnus->id);
+        return back()->with('success', 'See u soon!');
+    })->name('unjoin');
+
+    // route my event
+    Route::get('/my-events', function () {
+        $myEvents = DB::table('events')
+            ->join('alumnus_event', 'alumnus_event.event_id', '=', 'events.id')
+            ->where('alumnus_event.alumnus_id', '=', Auth::user()->alumnus->id)
+            ->where('events.status', '=', '1')
+            ->get();
+        return view('frontend.my-events', compact('myEvents'));
+    })->name('myevents');
+
+    // route profile
+    Route::get('/profile/{user:name}', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile/{alumnus}', [ProfileController::class, 'update'])->name('profile.update');
+
     // route logout
     Route::get('/logout', LogoutController::class)->name('logout');
 });

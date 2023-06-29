@@ -4,7 +4,6 @@
         <a href="/" class="app-brand-link">
             <span class="app-brand-text demo menu-text fw-bolder text-uppercase">Sisami</span>
         </a>
-
         <a href="" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
@@ -56,7 +55,7 @@
         <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
             <a href="{{ route('users.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-account"></i>
-                <div>Alumni account</div>
+                <div>Users</div>
             </a>
         </li>
         <li class="menu-header small text-uppercase">
@@ -77,8 +76,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data master job vacancies</span>
         </li>
-        <li class="menu-item">
-            <a href="" class="menu-link ">
+        <li class="menu-item {{ Request::is('vacancies*') ? 'active' : '' }}">
+            <a href="{{ route('vacancies.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
                 <div>Job vacancies</div>
             </a>

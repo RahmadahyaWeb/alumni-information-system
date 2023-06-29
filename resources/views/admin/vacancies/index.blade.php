@@ -6,11 +6,11 @@
                 <div class="card-header">
                     <div class="row d-flex align-items-center justify-centent-center">
                         <div class="col-6">
-                            <h4 class="mb-0">Events</h4>
+                            <h4 class="mb-0">Job Vacancies</h4>
                         </div>
                         <div class="col-6 text-end">
 
-                            <a href="{{ route('events.create') }}" class="btn btn-primary">
+                            <a href="{{ route('vacancies.create') }}" class="btn btn-primary">
                                 Create
                             </a>
                         </div>
@@ -24,26 +24,24 @@
                     <table class="table table-bordered responsive display nowrap table-hover" id="example">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Date</th>
-                                <th>Liaison</th>
+                                <th>Company</th>
+                                <th>Position</th>
+                                <th>Job Type</th>
                                 <th>Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @foreach ($vacancies as $vacancy)
                                 <tr>
-                                    <td>{{ $event->title }}</td>
-                                    <td>{{ $event->category->name }}</td>
-                                    <td>{{ $event->date }}</td>
-                                    <td>{{ $event->liaison->name }}</td>
+                                    <td>{{ $vacancy->company }}</td>
+                                    <td>{{ $vacancy->position }}</td>
+                                    <td>{{ $vacancy->job_type }}</td>
                                     <td>
-                                        @if ($event->status == 0)
-                                            inactive
-                                        @else
+                                        @if ($vacancy->status == 1)
                                             active
+                                        @else
+                                            inactive
                                         @endif
                                     </td>
                                     <td class="text-center">
@@ -52,10 +50,10 @@
                                             <i class="fas fa-cogs"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('events.edit', $event) }}" class="dropdown-item">
+                                            <a href="{{ route('vacancies.edit', $vacancy) }}" class="dropdown-item">
                                                 Edit
                                             </a>
-                                            <a href="{{ route('events.destroy', $event) }}" class="dropdown-item"
+                                            <a href="{{ route('vacancies.destroy', $vacancy) }}" class="dropdown-item"
                                                 data-confirm-delete="true">
                                                 Delete
                                             </a>

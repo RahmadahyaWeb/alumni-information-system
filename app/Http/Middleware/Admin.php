@@ -16,8 +16,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role_id != 1){
-            abort(404);
+        if (Auth::user()->role_id != 1) {
+            abort(403);
         }
         return $next($request);
     }

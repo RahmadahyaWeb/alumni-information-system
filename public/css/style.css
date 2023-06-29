@@ -55,7 +55,7 @@
 }
 
 body{
-    height: 5000px;
+    /* height: 5000px; */
     font-family: 'Poppins', sans-serif;
 }
 
@@ -71,13 +71,6 @@ body{
 }
 
 /* navbar */
-
-@media only screen and (min-width: 769px) {
-    /* For desktop: */
-    a.nav-link{
-        margin-right: 30px;
-    }
-}
 
 .navbar-toggler{
     border: none !important;
@@ -104,7 +97,17 @@ body{
 
 .navbar-scrolled{
     background-color: #F8F9FA;
-    opacity: 90%;
+    opacity: 95%;
+}
+
+.nav-item.dropdown .dropdown-toggle{
+    outline: none !important;
+    box-shadow: none;
+}
+
+.nav-item.dropdown a.dropdown-item:active{
+    background-color: #696cff;
+
 }
 
 /* hero */
@@ -125,17 +128,32 @@ section.hero{
   }
 
 /* card */
-.card{
-/* border: none; */
-}
 
 .card .card-footer{
     background-color: white;
 }
 
 /* section */
-section#about,section#event, section#summary, section#alumni{
+section#about,section#event, section#summary, section#alumni, section#job, section#vacancy{
     padding-top: 7rem;
+}
+
+/* pagination */
+.page-link:focus,.page-link:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+
+
+.page-link{
+    color: #696cff;
+}
+
+/* line */
+.line{
+    height: 5px;
+    background: #696cff;
 }
 
 

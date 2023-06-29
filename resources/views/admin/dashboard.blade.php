@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6 col-12 mb-4 order-0">
+        <div class="col-md-6 col-12 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="row d-flex align-items-center justify-content-start">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-12 mb-4 order-0">
+        <div class="col-md-6 col-12 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="row d-flex align-items-center justify-content-start">
@@ -40,8 +40,32 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-12">
+            <h5>Events</h5>
+        </div>
+        @if ($events->count() > 0)
+            @foreach ($events as $event)
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center justify-content-start">
+                                <div class="col-12">
+                                    <div class="fs-5">
+                                        {{ $event->title }}
+                                    </div>
+                                    <b>{{ $event->alumnus_count }} alumnus</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <h6 class="text-secondary mb-4">There are no events with participants yet</h6>
+        @endif
     </div>
+    <h5>Departements</h5>
+
     <div class="row">
         <div class="col-12 mb-4">
             <div class="card">

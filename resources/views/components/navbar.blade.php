@@ -19,8 +19,6 @@
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-
-
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                     <a class="nav-link dropdown-toggle hide-arrow" href="" data-bs-toggle="dropdown">
@@ -29,7 +27,6 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex">
@@ -48,12 +45,6 @@
 
                         <li>
                             <div class="dropdown-divider"></div>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="bx bx-user me-2"></i>
-                                <span class="align-middle">My Profile</span>
-                            </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">

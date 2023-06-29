@@ -20,13 +20,13 @@
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="category_id" class="form-label">category</label>
+                            <label for="category_id" class="form-label">Category</label>
                             <select name="category_id" id="category_id"
-                                class="form-select @error('category_id') is-invalid @enderror">
-                                <option selected disabled">Select category</option>
+                                class="form-select  @error('category_id') is-invalid @enderror">
+                                <option selected disabled>Select category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}
-                                    </option>
+                                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                                        {{ $category->name }}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -48,7 +48,7 @@
                         <div class="col-6 mb-3">
                             <label for="date" class="form-label">date</label>
                             <input class="form-control @error('date') is-invalid @enderror" type="date" id="date"
-                                name="date">
+                                name="date" value="{{ old('date') }}">
                             @error('date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -58,7 +58,7 @@
                         <div class="col-6 mb-3">
                             <label for="time" class="form-label">time</label>
                             <input class="form-control @error('time') is-invalid @enderror" type="time" id="time"
-                                name="time">
+                                name="time" value="{{ old('time') }}">
                             @error('time')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -78,12 +78,11 @@
                         <div class="col-12 mb-3">
                             <label for="liaison_id" class="form-label">Liaison</label>
                             <select name="liaison_id" id="liaison_id"
-                                class="form-select @error('liaison_id') is-invalid @enderror">
-                                <option selected disabled">Select liaison</option>
+                                class="form-select  @error('liaison_id') is-invalid @enderror">
+                                <option selected disabled>Select liaison</option>
                                 @foreach ($liaisons as $liaison)
-                                    <option value="{{ $liaison->id }}" @selected(old('liaison_id') == $liaison->id)>{{ $liaison->name }}
-                                        - {{ $liaison->class_of }}
-                                    </option>
+                                    <option value="{{ $liaison->id }}" @selected(old('liaison_id') == $liaison->id)>
+                                        {{ $liaison->name }} - {{ $liaison->class_of }}</option>
                                 @endforeach
                             </select>
                             @error('liaison_id')
@@ -93,9 +92,10 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="status" class="form-label">status</label>
-                            <select name="status" id="status" class="form-select @error('status') is-invalid @enderror">
-                                <option selected disabled">Select status</option>
+                            <label for="status" class="form-label">Status</label>
+                            <select name="status" id="status"
+                                class="form-select  @error('status') is-invalid @enderror">
+                                <option selected disabled>Select status</option>
                                 <option value="1" @selected(old('status') == '1')>Active</option>
                                 <option value="0" @selected(old('status') == '0')>Inactive</option>
                             </select>
@@ -110,7 +110,6 @@
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

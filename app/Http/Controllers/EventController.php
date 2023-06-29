@@ -44,8 +44,6 @@ class EventController extends Controller
             'title' => 'required',
             'description' => 'required',
             'liaison_id' => 'nullable',
-            'date' => 'required',
-            'time' => 'required',
             'thumbnail' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'status' => 'required',
             'category_id' => 'required'
@@ -95,8 +93,6 @@ class EventController extends Controller
             'title' => 'required',
             'description' => 'required',
             'liaison_id' => 'nullable',
-            'date' => 'required',
-            'time' => 'required',
             'thumbnail' => 'image|mimes:jpeg,jpg,png|max:2048',
             'status' => 'required',
             'category_id' => 'required'

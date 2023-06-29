@@ -21,7 +21,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/dashboard')->with('success', 'You are now logged in!');;
+            return redirect('/');
         }
 
         throw ValidationException::withMessages([
