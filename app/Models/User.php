@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'alumnus_id',
+        'company_id',
         'role_id'
     ];
 
@@ -50,10 +51,13 @@ class User extends Authenticatable
         return $this->belongsTo(Alumnus::class);
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
-
-    
 }

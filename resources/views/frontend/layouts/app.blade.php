@@ -16,11 +16,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     {{-- box icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {{-- dark mode js --}}
-    <script src="{{ asset('js/color-modes.js') }}"></script>
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+    {{-- Data table --}}
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet" />
+
     @livewireStyles
 </head>
 
@@ -61,6 +61,17 @@
                 document.getElementById("navbar").classList.remove('navbar-scrolled');
             }
         }
+    </script>
+    {{-- data table --}}
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // datatables
+            $('#example').DataTable({
+                responsive: true,
+                "lengthChange": false
+            });
+        });
     </script>
     @livewireScripts
 </body>

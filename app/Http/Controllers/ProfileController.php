@@ -47,6 +47,7 @@ class ProfileController extends Controller
                 'job_id' => $request->job_id,
             ]);
         }
+        User::where('alumnus_id', $alumnus->id)->update(['email' => $request->email]);
 
         return redirect()->back()->with('success', 'Your profile successfully updated!');
     }

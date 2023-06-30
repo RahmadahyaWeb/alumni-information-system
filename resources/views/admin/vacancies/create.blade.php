@@ -10,10 +10,15 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <label for="company" class="form-label">Company</label>
-                            <input type="text" class="form-control @error('company') is-invalid @enderror" id="company"
-                                name="company" value="{{ old('company') }}" placeholder="Company">
-                            @error('company')
+                            <label for="company_id" class="form-label">Company</label>
+                            <select name="company_id" id="company_id" class="form-select">
+                                <option selected disabled>Select company</option>
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}" @selected(old('company_id') == $company->id)>{{ $company->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('company_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

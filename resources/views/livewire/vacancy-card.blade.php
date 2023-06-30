@@ -3,6 +3,11 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <h3 class="text-center fw-bold">Start Your Career</h3>
+                @guest
+                    <h6 class="text-center">Looking for an employee? <a class="text-decoration-none"
+                            href="{{ route('register') }}">Register your company
+                            now!</a></h6>
+                @endguest
             </div>
         </div>
         <div class="row mb-3 g-2">
@@ -23,7 +28,7 @@
                     <div class="col-md-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">{{ $vacancy->company }}</h5>
+                                <h5 class="card-title fw-bold">{{ $vacancy->company->name }}</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">
                                     <span>{{ $vacancy->job_type }} | {{ $vacancy->position }}</span>
                                 </h6>

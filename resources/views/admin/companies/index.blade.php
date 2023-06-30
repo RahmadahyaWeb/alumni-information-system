@@ -6,20 +6,13 @@
                 <div class="card-header">
                     <div class="row d-flex align-items-center justify-centent-center">
                         <div class="col-6">
-                            <h4 class="mb-0">Users</h4>
+                            <h4 class="mb-0">Companies</h4>
                         </div>
                         <div class="col-6 text-end">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Create
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('users.create') }}">Alumnus account</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('company.create') }}">Company account</a>
-                                    </li>
-                                </ul>
-                            </div>
+
+                            <a href="{{ route('companies.create') }}" class="btn btn-primary">
+                                Create
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -33,26 +26,24 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($companies as $company)
                                 <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role->name }}</td>
+                                    <td>{{ $company->name }}</td>
+                                    <td>{{ $company->email }}</td>
                                     <td class="text-center">
                                         <button class="btn p-0" type="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class="fas fa-cogs"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('users.edit', $user) }}" class="dropdown-item">
-                                                Change password
+                                            <a href="{{ route('companies.edit', $company) }}" class="dropdown-item">
+                                                Edit
                                             </a>
-                                            <a href="{{ route('users.destroy', $user) }}" class="dropdown-item"
+                                            <a href="{{ route('companies.destroy', $company) }}" class="dropdown-item"
                                                 data-confirm-delete="true">
                                                 Delete
                                             </a>

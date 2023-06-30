@@ -52,6 +52,9 @@
                 <div>Departements</div>
             </a>
         </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Data master users</span>
+        </li>
         <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
             <a href="{{ route('users.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-account"></i>
@@ -74,12 +77,18 @@
             </a>
         </li>
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Data master job vacancies</span>
+            <span class="menu-header-text">Data master vacancies</span>
         </li>
         <li class="menu-item {{ Request::is('vacancies*') ? 'active' : '' }}">
             <a href="{{ route('vacancies.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
                 <div>Job vacancies</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('companies*') ? 'active' : '' }}">
+            <a href="{{ route('companies.index') }}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div>Companies</div>
             </a>
         </li>
         <li class="menu-item">

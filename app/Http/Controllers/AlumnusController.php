@@ -7,6 +7,7 @@ use App\Models\Departement;
 use App\Models\Job;
 use App\Models\Liaison;
 use App\Models\Study;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -162,6 +163,11 @@ class AlumnusController extends Controller
                 'title_of_final_task' => $request->title_of_final_task,
             ]);
         }
+
+        User::where('alumnus_id', $alumnus->id)->update([
+            'email' => $request->email,
+            'name' => $request->name
+        ]);
         return redirect()->route('alumni.index')->with('success', 'Alumnus was updated!');
     }
 

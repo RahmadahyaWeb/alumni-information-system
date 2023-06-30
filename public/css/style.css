@@ -82,7 +82,7 @@ body{
     transition: all 0.5s;
 }
 
-.show {
+.navbar-collapse.show {
     transition: all 0.5s;
 
 }
@@ -109,6 +109,7 @@ body{
     background-color: #696cff;
 
 }
+
 
 /* hero */
 section.hero{

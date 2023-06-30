@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AlumnusController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyAccount;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyVacancyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\JobController;
@@ -9,6 +12,7 @@ use App\Http\Controllers\LiaisonController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
@@ -17,6 +21,7 @@ use App\Models\Departement;
 use App\Models\Event;
 use App\Models\Liaison;
 use App\Models\Study;
+use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -103,6 +108,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/users', UserController::class);
     // route vacancies
     Route::resource('/vacancies', VacancyController::class);
+    // route companies
+    Route::resource('/companies', CompanyController::class);
+    // route company account
+    Route::get('/users/company/account', [CompanyAccount::class, 'create'])->name('company.create');
+    Route::post('/users/company/account', [CompanyAccount::class, 'store'])->name('company.store');
 });
 
 // route user
@@ -140,9 +150,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
 });
 
+// route company
+Route::middleware(['company'])->group(function () {
+    // route company vacancies
+    Route::resource('/vacancy', CompanyVacancyController::class);
+});
+
 
 Route::middleware(['guest'])->group(function () {
     // route login
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login');
+    // route register
+    Route::get('/register', [RegistrationController::class, 'create'])->name('register');
+    Route::post('/register', [RegistrationController::class, 'store'])->name('register');
 });
+

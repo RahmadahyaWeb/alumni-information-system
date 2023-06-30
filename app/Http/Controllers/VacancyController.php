@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VacancyController extends Controller
 {
@@ -17,7 +19,7 @@ class VacancyController extends Controller
         confirmDelete($title, $text);
 
         return view('admin.vacancies.index', [
-            'vacancies' => Vacancy::latest()->get()
+            'vacancies' => Vacancy::all()
         ]);
     }
 
@@ -26,7 +28,9 @@ class VacancyController extends Controller
      */
     public function create()
     {
-        return view('admin.vacancies.create');
+        return view('admin.vacancies.create', [
+            'companies' => Company::all()
+        ]);
     }
 
     /**
@@ -35,7 +39,7 @@ class VacancyController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'company' => 'required',
+            'company_id' => 'required',
             'position' => 'required',
             'salary' => 'required|numeric',
             'requirements' => 'required',
@@ -61,7 +65,8 @@ class VacancyController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
-        return view('admin.vacancies.edit', compact('vacancy'));
+        $companies = Company::all();
+        return view('admin.vacancies.edit', compact('vacancy', 'companies'));
     }
 
     /**
@@ -70,7 +75,7 @@ class VacancyController extends Controller
     public function update(Request $request, Vacancy $vacancy)
     {
         $attributes = $request->validate([
-            'company' => 'required',
+            'company_id' => 'required',
             'position' => 'required',
             'salary' => 'required|numeric',
             'requirements' => 'required',

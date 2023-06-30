@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumnus;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -16,6 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return view('admin.users.index', [
             'users' => User::with('alumnus')->get()->except(2)
         ]);
@@ -86,8 +87,9 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User was deleted!');
     }
 }
