@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nim')->unique();
             $table->string('email')->unique();
-            $table->string('ipk');
+            $table->string('gpa');
             $table->string('title_of_final_task');
             $table->string('photo');
             $table->foreignId('job_id')->constrained()->restrictOnDelete();

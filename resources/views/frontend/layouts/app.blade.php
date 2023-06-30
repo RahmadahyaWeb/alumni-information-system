@@ -20,7 +20,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {{-- Data table --}}
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet" />
-
+    {{-- summernote --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     @livewireStyles
 </head>
 
@@ -71,6 +72,21 @@
                 responsive: true,
                 "lengthChange": false
             });
+        });
+    </script>
+    {{-- summernote --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Describe your company requirements',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]
         });
     </script>
     @livewireScripts

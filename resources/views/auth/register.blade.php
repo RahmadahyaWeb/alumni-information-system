@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-12 text-center mb-2">
                                 <h3 class="fw-bold mb-2">SISAMI</h3>
-                                <p>Please sign-in to your account and start the session</p>
+                                <p>Please provide accurate information about your company</p>
                             </div>
                         </div>
                         <!-- /Logo -->

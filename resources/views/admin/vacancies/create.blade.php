@@ -10,15 +10,20 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <label for="company_id" class="form-label">Company</label>
-                            <select name="company_id" id="company_id" class="form-select">
-                                <option selected disabled>Select company</option>
-                                @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}" @selected(old('company_id') == $company->id)>{{ $company->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('company_id')
+                            <label for="company_name" class="form-label">Company</label>
+                            <input type="text" class="form-control" id="company_name" name="company_name"
+                                value="{{ old('company_name') }}" placeholder="Company name">
+                            @error('company_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="{{ old('email') }}" placeholder="Email">
+                            @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -59,12 +64,9 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="requirements" class="form-label">Requirements</label>
-                            <div class="form-floating">
-                                <textarea class="form-control @error('requirements') is-invalid @enderror"
-                                    placeholder="Describe your company requirements" id="requirements" style="height: 100px" name="requirements">{{ old('requirements') }}</textarea>
-                                <label for="requirements">Requirements</label>
-                            </div>
+                            <label for="summernote" class="form-label">Requirements</label>
+                            <textarea class=" @error('requirements') is-invalid @enderror" placeholder="Describe your company requirements"
+                                id="summernote" style="height: 100px" name="requirements">{{ old('requirements') }}</textarea>
                             @error('requirements')
                                 <div class="invalid-feedback">
                                     {{ $message }}

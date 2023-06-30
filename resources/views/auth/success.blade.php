@@ -140,13 +140,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
-                    <h5 class="fw-bold">Your company has been successfully registered!</h5>
+                    <h5 class="fw-bold">Your job vacancy was successfully requested!</h5>
                     <p>
-                        We kindly request some time to process your company account. Please make sure to periodically log in
-                        using the email address you provided during registration. The default password is set to "<span
-                            class="fw-bold">password</span>,"
-                        but you will have the opportunity to change it later.
+                        We kindly request some time to process your job vacancy request. Please make sure to check it
+                        periodically.
                     </p>
+                    <a href="/" class="btn btn-primary">
+                        Back to Sisami homepage
+                    </a>
                 </div>
             </div>
         </div>

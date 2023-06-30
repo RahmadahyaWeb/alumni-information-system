@@ -4,23 +4,42 @@
     <section class="my-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 mb-4">
-                    <h3 class="text-center fw-bold">{{ Auth::user()->name }}</h3>
-                </div>
-                <div class="col-12">
+                <div class="col">
                     <div class="card shadow-sm">
                         <div class="card-header">
                             Form create vacancy
                         </div>
-                        <div class="card-body">
-                            <form action="{{ route('vacancy.store') }}" method="POST">
+                        <form action="{{ route('vacancy.store') }}" method="POST">
+                            <div class="card-body">
                                 @csrf
                                 <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="company_name" class="form-label">Company</label>
+                                        <input type="text"
+                                            class="form-control @error('company_name') is-invalid @enderror"
+                                            id="company_name" name="company_name" value="{{ old('company_name') }}"
+                                            placeholder="Enter your company name">
+                                        @error('company_name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control @error('company_name') is-invalid @enderror" id="email" name="email"
+                                            value="{{ old('email') }}" placeholder="Enter your company email">
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="position" class="form-label">Position</label>
                                         <input type="text" class="form-control @error('position') is-invalid @enderror"
                                             id="position" name="position" value="{{ old('position') }}"
-                                            placeholder="Position">
+                                            placeholder="What position are you looking for">
                                         @error('position')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -44,7 +63,8 @@
                                     <div class="col-12 mb-3">
                                         <label for="salary" class="form-label">Salary</label>
                                         <input type="number" class="form-control @error('salary') is-invalid @enderror"
-                                            id="salary" name="salary" value="{{ old('salary') }}" placeholder="Salary">
+                                            id="salary" name="salary" value="{{ old('salary') }}"
+                                            placeholder="Please be wise in determining the salary ">
                                         @error('salary')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -52,26 +72,28 @@
                                         @enderror
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <label for="requirements" class="form-label">Requirements</label>
-                                        <div class="form-floating">
-                                            <textarea class="form-control @error('requirements') is-invalid @enderror"
-                                                placeholder="Describe your company requirements" id="requirements" style="height: 100px" name="requirements">{{ old('requirements') }}</textarea>
-                                            <label for="requirements">Requirements</label>
-                                        </div>
+                                        <label for="summernote" class="form-label">Requirements</label>
+                                        <textarea class=" @error('requirements') is-invalid @enderror" placeholder="Describe your company requirements"
+                                            id="summernote" style="height: 100px" name="requirements">{{ old('requirements') }}</textarea>
                                         @error('requirements')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
                                     <div class="col-12 d-md-flex justify-content-end">
-                                        <div class="mb-3 d-grid d-md-block">
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        <div class="d-grid d-md-block">
+                                            <button onclick="return confirm('Are you sure want to submit the job vacancy?')"
+                                                type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

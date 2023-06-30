@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach ($vacancies as $vacancy)
                                 <tr>
-                                    <td>{{ $vacancy->company->name }}</td>
+                                    <td>{{ $vacancy->company_name }}</td>
                                     <td>{{ $vacancy->position }}</td>
                                     <td>{{ $vacancy->job_type }}</td>
                                     <td>

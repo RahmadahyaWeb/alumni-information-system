@@ -6,6 +6,8 @@ use App\Models\Alumnus;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -47,8 +49,23 @@ class ProfileController extends Controller
                 'job_id' => $request->job_id,
             ]);
         }
-        User::where('alumnus_id', $alumnus->id)->update(['email' => $request->email]);
+        User::where('alumnus_id', $alumnus->id)->update([
+            'email' => $request->email,
+        ]);
 
         return redirect()->back()->with('success', 'Your profile successfully updated!');
+    }
+
+    public function changePassword(Request $request, Alumnus $alumnus)
+    {
+        $request->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        User::where('alumnus_id', $alumnus->id)
+            ->update([
+                'password' => Hash::make($request->password)
+            ]);
+        return redirect()->back()->with('success', 'Your password successfully updated!');
     }
 }

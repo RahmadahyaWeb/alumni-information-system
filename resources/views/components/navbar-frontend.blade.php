@@ -30,7 +30,7 @@
                             @if (Auth::user()->role_id == 1)
                                 <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
                             @elseif (Auth::user()->role_id == 3)
-                                <li><a class="dropdown-item" href="{{ route('vacancy.index') }}">My vacancy</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('vacancyCompany.index') }}">My vacancy</a></li> --}}
                             @else
                                 <li><a class="dropdown-item" href="{{ route('profile', Auth::user()->name) }}">Profile</a>
                                 </li>

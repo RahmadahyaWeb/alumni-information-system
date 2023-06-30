@@ -85,18 +85,6 @@
                 <div>Job vacancies</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::is('companies*') ? 'active' : '' }}">
-            <a href="{{ route('companies.index') }}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-building"></i>
-                <div>Companies</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-receipt"></i>
-                <div>Request</div>
-            </a>
-        </li>
     </ul>
 </aside>
 <!-- / Menu -->

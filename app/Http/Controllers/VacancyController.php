@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class VacancyController extends Controller
 {
@@ -19,7 +17,7 @@ class VacancyController extends Controller
         confirmDelete($title, $text);
 
         return view('admin.vacancies.index', [
-            'vacancies' => Vacancy::all()
+            'vacancies' => Vacancy::get()
         ]);
     }
 
@@ -28,9 +26,7 @@ class VacancyController extends Controller
      */
     public function create()
     {
-        return view('admin.vacancies.create', [
-            'companies' => Company::all()
-        ]);
+        return view('admin.vacancies.create');
     }
 
     /**
@@ -39,12 +35,13 @@ class VacancyController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'company_id' => 'required',
+            'company_name' => 'required',
             'position' => 'required',
             'salary' => 'required|numeric',
             'requirements' => 'required',
             'job_type' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'email' => 'required|email'
         ]);
 
         Vacancy::create($attributes);
@@ -65,8 +62,7 @@ class VacancyController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
-        $companies = Company::all();
-        return view('admin.vacancies.edit', compact('vacancy', 'companies'));
+        return view('admin.vacancies.edit', compact('vacancy'));
     }
 
     /**
@@ -75,12 +71,13 @@ class VacancyController extends Controller
     public function update(Request $request, Vacancy $vacancy)
     {
         $attributes = $request->validate([
-            'company_id' => 'required',
+            'company_name' => 'required',
             'position' => 'required',
             'salary' => 'required|numeric',
             'requirements' => 'required',
             'job_type' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'email' => 'required|email'
         ]);
 
         $vacancy->update($attributes);

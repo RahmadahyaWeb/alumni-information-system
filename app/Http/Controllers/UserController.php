@@ -18,7 +18,7 @@ class UserController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
         return view('admin.users.index', [
-            'users' => User::with('alumnus')->get()->except(2)
+            'users' => User::with('alumnus')->get()->except(1)
         ]);
     }
 

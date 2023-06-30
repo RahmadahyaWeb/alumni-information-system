@@ -9,17 +9,7 @@
                             <h4 class="mb-0">Users</h4>
                         </div>
                         <div class="col-6 text-end">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Create
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('users.create') }}">Alumnus account</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('company.create') }}">Company account</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">Create </a>
                         </div>
                     </div>
                 </div>

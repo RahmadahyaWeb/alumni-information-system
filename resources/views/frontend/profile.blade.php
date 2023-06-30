@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row g-2">
                 <div class="col-12 mb-4">
-                    <h3 class="text-center fw-bold">Profile</h3>
+                    <h3 class="text-center fw-bold">Your Profile</h3>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-duration="1100">
                     <div class="card shadow-sm mb-2">
@@ -22,9 +22,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">
+                    <div class="card shadow-sm mb-2">
+                        <div class="card-body ">
+                            <h5 class="card-title ">
                                 Notes for alumnus
                             </h5>
                             <hr>
@@ -36,6 +36,49 @@
                                 If you notice any inaccuracies in other
                                 details, please don't hesitate to contact the administrator promptly.
                             </p>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Change password
+                            </h5>
+                            <hr>
+                            <form action="{{ route('profile.update', $alumnus) }}" method="POST">
+                                @csrf
+                                @method('put')
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="password" class="form-label">
+                                            New password
+                                        </label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                            id="password" name="password" placeholder="New password">
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                <span>{{ $message }}</span>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="password_confirmation" class="form-label">
+                                            Confirm new Password
+                                        </label>
+                                        <input type="password" class="form-control" id="password_confirmation"
+                                            name="password_confirmation" placeholder="Confirm new password">
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">
+                                                <span>{{ $message }}</span>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3 d-grid">
+                                            <button type="submit" class="btn btn-primary">Change password</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -96,7 +139,8 @@
                                     <div class="col-12">
                                         <label for="company" class="form-label">Company</label>
                                         <input type="company" class="form-control @error('company') is-invalid @enderror"
-                                            id="company" name="company" value="{{ old('company', $alumnus->company) }}"
+                                            id="company" name="company"
+                                            value="{{ old('company', $alumnus->company) }}"
                                             placeholder="Type your current company">
                                         @error('company')
                                             <div class="invalid-feedback">
