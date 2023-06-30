@@ -10,6 +10,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LiaisonController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestVacancyController;
 use App\Http\Controllers\StudyController;
@@ -160,6 +161,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/{alumnus}', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/{alumnus}', [ProfileController::class, 'changePassword'])->name('profile.update');
 
+    // route post
+    Route::get('/forum', [PostController::class, 'index'])->name('forum.index');
+    Route::get('/forum/{post}', [PostController::class, 'show'])->name('forum.show');
+
     // route logout
     Route::get('/logout', LogoutController::class)->name('logout');
 });
@@ -170,4 +175,3 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login');
 });
-

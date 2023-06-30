@@ -51,13 +51,18 @@ class User extends Authenticatable
         return $this->belongsTo(Alumnus::class);
     }
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Post::class);
     }
 }

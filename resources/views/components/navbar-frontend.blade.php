@@ -29,11 +29,10 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             @if (Auth::user()->role_id == 1)
                                 <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
-                            @elseif (Auth::user()->role_id == 3)
-                                {{-- <li><a class="dropdown-item" href="{{ route('vacancyCompany.index') }}">My vacancy</a></li> --}}
                             @else
                                 <li><a class="dropdown-item" href="{{ route('profile', Auth::user()->name) }}">Profile</a>
                                 </li>
+                                <li><a class="dropdown-item" href="{{ route('forum.index') }}">Alumni forum</a></li>
                                 <li><a class="dropdown-item" href="{{ route('myevents') }}">My events</a></li>
                             @endif
                             <li>
