@@ -22,6 +22,7 @@
                                         </a>
                                     </h5>
                                     <p class="card-text text-secondary">
+                                        Date & time:
                                         {{ \Illuminate\Support\Carbon::parse($event->date)->format('d F Y') }},
                                         {{ date('H:i', strtotime($event->time)) }} WITA.
                                     </p>

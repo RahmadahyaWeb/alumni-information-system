@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.users.index', [
-            'users' => User::with('alumnus')->get()->except(1)
+            'users' => User::with('alumnus')->get()->except(2)
         ]);
     }
 

@@ -37,9 +37,8 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" rows="3"
-                                class="form-control @error('description') is-invalid @enderror">{{ old('description', $event->description) }}</textarea>
+                            <label for="summernote" class="form-label">Description</label>
+                            <textarea name="description" id="summernote" rows="3" class="@error('description') is-invalid @enderror">{{ old('description', $event->description) }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -79,12 +78,11 @@
                         <div class="col-12 mb-3">
                             <label for="liaison_id" class="form-label">Liaison</label>
                             <select name="liaison_id" id="liaison_id"
-                                class="form-select @error('liaison_id') is-invalid @enderror">
-                                <option selected disabled">Select liaison</option>
+                                class="form-select  @error('liaison_id') is-invalid @enderror">
+                                <option selected disabled>Select liaison</option>
                                 @foreach ($liaisons as $liaison)
-                                    <option value="{{ $liaison->id }}" @selected(old('liaison_id', $event->liaison_id) == $liaison->id)>{{ $liaison->name }}
-                                        - {{ $liaison->class_of }}
-                                    </option>
+                                    <option value="{{ $liaison->id }}" @selected(old('liaison_id', $event->liaison_id) == $liaison->id)>
+                                        {{ $liaison->name }} - {{ $liaison->class_of }}</option>
                                 @endforeach
                             </select>
                             @error('liaison_id')
@@ -93,6 +91,7 @@
                                 </div>
                             @enderror
                         </div>
+
                         <div class="col-12 mb-3">
                             <label for="status" class="form-label">status</label>
                             <select name="status" id="status" class="form-select @error('status') is-invalid @enderror">

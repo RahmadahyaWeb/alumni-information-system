@@ -20,6 +20,7 @@
     <script src="{{ asset('js/color-modes.js') }}"></script>
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
     @livewireStyles
 </head>
 
@@ -46,6 +47,7 @@
     <script>
         AOS.init();
     </script>
+
 
     <script>
         window.onscroll = function() {

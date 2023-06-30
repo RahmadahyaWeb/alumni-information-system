@@ -14,24 +14,29 @@
                                 </a>
                             </h5>
                             <p class="card-text text-secondary">
+                                Date & time:
                                 {{ \Illuminate\Support\Carbon::parse($event->date)->format('d F Y') }},
                                 {{ date('H:i', strtotime($event->time)) }} WITA.
                             </p>
                             <p class="card-text">
                                 <a href="{{ route('event.detail', $event) }}" class="text-decoration-none text-dark">
-                                    {{ $event->description }}
+                                    {!! $event->description !!}
                                 </a>
                             </p>
-                            <span>Contact for more information:</span>
-                            <p class="card-text">
-                                <span>{{ $event->liaison->name }}</span>
-                                <a href="https://wa.me/+62{{ $event->liaison->phone_number }}" class="text-decoration-none">
-                                    {{ $event->liaison->phone_number }}
-                                </a>
-                            </p>
-                            @if (Auth::user()->role_id != 1)
-                                @if ($event->category->name != 'News')
-                                    @auth
+                            @if ($event->category->name != 'News')
+                                <span>Contact for more information:</span>
+                                <p class="card-text">
+                                    <span>{{ $event->liaison->name }}</span>
+                                    <a href="https://wa.me/+62{{ $event->liaison->phone_number }}"
+                                        class="text-decoration-none">
+                                        {{ $event->liaison->phone_number }}
+                                    </a>
+                                </p>
+                            @endif
+
+                            @auth
+                                @if (Auth::user()->role_id != 1)
+                                    @if ($event->category->name != 'News')
                                         @php
                                             $hasJoined = DB::table('events')
                                                 ->join('alumnus_event', 'alumnus_event.event_id', '=', 'events.id')
@@ -49,14 +54,13 @@
                                                     registration</button>
                                             </form>
                                         @endif
-                                    @endauth
-                                @else
+                                    @else
+                                    @endif
                                 @endif
-                            @endif
-
-
+                            @endauth
                         </div>
                         <div class="card-footer text-secondary">
+                            Published
                             {{ $event->updated_at->diffForHumans() }}
                         </div>
                     </div>
@@ -76,7 +80,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h5 class="my-0 fw-bold text-center">
-                                    Another Events
+                                    Another things to read
                                 </h5>
                             </div>
                         </div>
@@ -90,6 +94,7 @@
                                         </a>
                                     </h5>
                                     <p class="card-text text-secondary">
+                                        Date & time:
                                         {{ \Illuminate\Support\Carbon::parse($event->date)->format('d F Y') }},
                                         {{ date('H:i', strtotime($event->time)) }} WITA.
                                     </p>
@@ -107,6 +112,7 @@
                                     </p>
                                 </div>
                                 <div class="card-footer text-secondary">
+                                    Published
                                     {{ $event->updated_at->diffForHumans() }}
                                 </div>
                             </div>

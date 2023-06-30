@@ -20,7 +20,7 @@ class VacancyCard extends Component
         return view('livewire.vacancy-card', [
             'vacancies' => Vacancy::where(
                 [
-                    ['company', 'like', '%' . $this->search . '%'],
+                    // ['company', 'like', '%' . $this->search . '%'],
                     ['job_type', 'like', '%' . $this->filter . '%'],
                 ]
             )

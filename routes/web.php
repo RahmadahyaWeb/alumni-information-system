@@ -24,21 +24,12 @@ use Illuminate\Support\Facades\Route;
 
 // route frontpage
 Route::get('/', function () {
-    $departements = Departement::with('study')->withCount([
-        'alumnus',
-        'study',
-        'alumnus as female' => function (Builder $query) {
-            $query->where('gender', 'female');
-        },
-        'alumnus as male' => function (Builder $query) {
-            $query->where('gender', 'male');
-        },
-    ])->get();
+    $departements = Departement::with('study')->get();
 
     return view('frontend.frontpage', [
         'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->get(),
         'departements' => $departements,
-        'studies' => Study::all(),
+        'studies' => Study::with('departement')->get(),
     ]);
 });
 

@@ -21,13 +21,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-bordered responsive display nowrap table-hover" id="example">
+                    <table class="table table-bordered responsive display table-hover" id="example">
                         <thead>
                             <tr>
                                 <th>Title</th>
                                 <th>Category</th>
-                                <th>Date</th>
-                                <th>Liaison</th>
                                 <th>Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -37,8 +35,6 @@
                                 <tr>
                                     <td>{{ $event->title }}</td>
                                     <td>{{ $event->category->name }}</td>
-                                    <td>{{ $event->date }}</td>
-                                    <td>{{ $event->liaison->name }}</td>
                                     <td>
                                         @if ($event->status == 0)
                                             inactive

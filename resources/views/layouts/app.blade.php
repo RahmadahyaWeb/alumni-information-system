@@ -54,6 +54,10 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
+    {{-- summernote --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+
     <style>
         .swal2-container {
             z-index: 10000 !important;
@@ -85,22 +89,6 @@
                     </div>
                     <!-- / Content -->
 
-                    <!-- Footer -->
-                    {{-- <footer class="content-footer footer bg-footer-theme">
-                        <div
-                            class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                            <div class="mb-2 mb-md-0">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                , made with ❤️ by
-                                <a href="https://themeselection.com" target="_blank"
-                                    class="footer-link fw-bolder">ThemeSelection</a>
-                            </div>
-                        </div>
-                    </footer> --}}
-                    <!-- / Footer -->
 
                     <div class="content-backdrop fade"></div>
                 </div>
@@ -124,9 +112,6 @@
     <script src="{{ asset('/assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
-    <!-- Vendors JS -->
-    <script src="{{ asset('/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-
     <!-- Main JS -->
     <script src="{{ asset('/assets/js/main.js') }}"></script>
 
@@ -135,12 +120,27 @@
 
     <script src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
 
-
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     {{-- select2 --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    {{-- summernote --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]
+        });
+    </script>
 
     {{-- data table --}}
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.js"></script>

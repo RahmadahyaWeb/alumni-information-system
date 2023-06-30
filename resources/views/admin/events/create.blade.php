@@ -36,9 +36,8 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" rows="3"
-                                class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                            <label for="summernote" class="form-label">Description</label>
+                            <textarea name="description" id="summernote" rows="3" class="@error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}

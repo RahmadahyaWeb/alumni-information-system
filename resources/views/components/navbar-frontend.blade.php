@@ -14,7 +14,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto text-center">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link" aria-current="page" href="/#">Home</a>
                 <a class="nav-link" href="/#about">About</a>
                 <a class="nav-link" href="/#summary">Summary</a>
                 <a class="nav-link" href="/#alumni">Alumni</a>
