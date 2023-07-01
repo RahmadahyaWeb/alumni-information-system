@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Poliban | Alumni</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('sisami/favicon.ico') }}" />
 
@@ -35,6 +35,19 @@
 
     @yield('content')
 
+
+
+    {{-- footer --}}
+    <footer class="pt-5 my-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="/#about" class="nav-link px-2 text-body-secondary">About</a></li>
+            <li class="nav-item"><a href="/#summary" class="nav-link px-2 text-body-secondary">Summary</a></li>
+            <li class="nav-item"><a href="/#event" class="nav-link px-2 text-body-secondary">Events</a></li>
+            <li class="nav-item"><a href="/#vacancy" class="nav-link px-2 text-body-secondary">Job Vacancies</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2023 Sisami</p>
+    </footer>
 
     {{-- jquery --}}
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="

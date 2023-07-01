@@ -33,7 +33,7 @@
                     <div class="mb-2">
                         <button class="btn btn-sm btn-primary mb-1"
                             wire:click="selectReply({{ $comment->id }})">Reply</button>
-                        @if ($comment->user_id == Auth::user()->id)
+                        @if ($comment->user_id == Auth::user()->id || Auth::user()->role_id == 1)
                             <button class="btn btn-sm btn-warning mb-1"
                                 wire:click="selectEdit({{ $comment->id }})">Edit</button>
                             <button class="btn btn-sm btn-danger mb-1"
@@ -88,7 +88,7 @@
                                 <div class="mb-2">
                                     <button class="btn btn-sm btn-primary mb-1"
                                         wire:click="selectReply({{ $comment2->id }})">Reply</button>
-                                    @if ($comment2->user_id == Auth::user()->id)
+                                    @if ($comment2->user_id == Auth::user()->id || Auth::user()->role_id == 1)
                                         <button class="btn btn-sm btn-warning mb-1"
                                             wire:click="selectEdit({{ $comment2->id }})">Edit</button>
                                         <button class="btn btn-sm btn-danger mb-1"

@@ -40,6 +40,44 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex align-items-center justify-content-start">
+                        <div class="col-4">
+                            <div class="bg-primary text-white p-2 rounded fs-1 w-100 text-center">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="fs-5 mb-1">
+                                Siforum
+                            </div>
+                            <b>{{ $posts }} post</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex align-items-center justify-content-start">
+                        <div class="col-4">
+                            <div class="bg-primary text-white p-2 rounded fs-1 w-100 text-center">
+                                <i class="fa-solid fa-file"></i>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="fs-5 mb-1">
+                                Job vacancies
+                            </div>
+                            <b>{{ $vacancies }}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-12">
             <h5>Events</h5>
         </div>

@@ -85,6 +85,15 @@
                 <div>Job vacancies</div>
             </a>
         </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Data master Siforum</span>
+        </li>
+        <li class="menu-item {{ Request::is('forum*') ? 'active' : '' }}">
+            <a href="{{ route('siforum.index') }}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxs-chat"></i>
+                <div>Siforum</div>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Menu -->

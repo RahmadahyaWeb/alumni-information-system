@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -12,9 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('frontend.posts', [
-            'posts' => Post::latest()->get()
-        ]);
+        $title = 'Delete Thread!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
+        return view('frontend.posts');
     }
 
     /**
@@ -30,7 +34,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        Post::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'body' => $request->body,
+            'user_id' => Auth::id()
+        ]);
+
+
+        return back()->with('success', 'Your thread was successfully created!');
     }
 
     /**
@@ -54,7 +71,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $post->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'body' => $request->body,
+            'user_id' => Auth::id()
+        ]);
+
+
+        return back()->with('success', 'Your thread was successfully updated!');
     }
 
     /**
@@ -62,6 +92,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return back()->with('success', 'Your thread was successfully deleted!');
     }
 }

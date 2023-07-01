@@ -19,7 +19,8 @@ class EventCard extends Component
     public function render()
     {
         return view('livewire.event-card', [
-            'events' => Event::where('title', 'like', '%' . $this->search . '%')
+            'events' => Event::with('category')
+                ->where('title', 'like', '%' . $this->search . '%')
                 ->where('category_id', 'like', '%' . $this->filter . '%')
                 ->where('status', 1)
                 ->latest()

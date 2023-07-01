@@ -1098,7 +1098,7 @@
     </section>
 
     {{-- job vacancies --}}
-    <section class="mb-5" id="vacancy">
+    <section class="mb-5 pb-4" id="vacancy">
         @livewire('vacancy-card')
     </section>
 @endsection

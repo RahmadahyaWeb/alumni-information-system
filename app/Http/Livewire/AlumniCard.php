@@ -22,13 +22,13 @@ class AlumniCard extends Component
     public function render()
     {
         return view('livewire.alumni-card', [
-            'alumni' => Alumnus::where('name', 'like', '%' . $this->search . '%')
+            'alumni' => Alumnus::with('study', 'departement', 'liaison')->where('name', 'like', '%' . $this->search . '%')
                 ->where('departement_id', 'like', '%' . $this->departement . '%')
                 ->where('study_id', 'like', '%' . $this->study . '%')
                 ->where('liaison_id', 'like', '%' . $this->class . '%')
                 ->simplePaginate(3),
             'departements' => Departement::all(),
-            'studies' => Study::where('departement_id', $this->departement)->get(),
+            'studies' => Study::with('departement')->where('departement_id', $this->departement)->get(),
             'liaisons' => Liaison::all()
         ]);
     }

@@ -16,7 +16,7 @@ class Company
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role_id != 3) {
+        if (Auth::user()->role_id != 2) {
             abort(403);
         }
         return $next($request);

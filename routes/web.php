@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\AlumnusController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CompanyAccount;
-use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\JobController;
@@ -13,6 +11,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestVacancyController;
+use App\Http\Controllers\SiforumController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
@@ -20,6 +19,7 @@ use App\Models\Alumnus;
 use App\Models\Departement;
 use App\Models\Event;
 use App\Models\Liaison;
+use App\Models\Post;
 use App\Models\Study;
 use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Builder;
@@ -92,13 +92,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
             ->groupBy('events.title')
             ->get();
 
+        $posts = Post::with('user')->count();
+        $vacancies = Vacancy::count();
+
 
         return view('admin.dashboard', [
             'alumni' => Alumnus::with('study', 'departement', 'job', 'liaison')->get(),
             'departements' => $departements,
             'liaisons' => Liaison::get(),
             'gpas_departement' => $gpas_departement,
-            'events' => $events
+            'events' => $events,
+            'posts' => $posts,
+            'vacancies' => $vacancies
         ]);
     });
     // route liaisons
@@ -127,6 +132,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // route companies
     Route::get('/users/company/account', [CompanyAccount::class, 'create'])->name('company.create');
     Route::post('/users/company/account', [CompanyAccount::class, 'store'])->name('company.store');
+    // route siforum
+    Route::get('/forum', [SiforumController::class, 'index'])->name('siforum.index');
+    Route::get('/forum/{post}', [SiforumController::class, 'edit'])->name('siforum.edit');
+    Route::put('/forum/{post}', [SiforumController::class, 'update'])->name('siforum.update');
+    Route::delete('/forum/delete/{post}', [SiforumController::class, 'destroy'])->name('siforum.destroy');
 });
 
 // route user
@@ -162,12 +172,15 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/{alumnus}', [ProfileController::class, 'changePassword'])->name('profile.update');
 
     // route post
-    Route::get('/forum', [PostController::class, 'index'])->name('forum.index');
-    Route::get('/forum/{post}', [PostController::class, 'show'])->name('forum.show');
-
-    // route logout
-    Route::get('/logout', LogoutController::class)->name('logout');
+    Route::get('/Siforum', [PostController::class, 'index'])->name('forum.index');
+    Route::post('/Siforum', [PostController::class, 'store'])->name('forum.store');
+    Route::get('/Siforum/{post:slug}', [PostController::class, 'show'])->name('forum.show');
+    Route::put('/Siforum/{post}', [PostController::class, 'update'])->name('forum.update');
+    Route::delete('/Siforum//delete/{post}', [PostController::class, 'destroy'])->name('forum.destroy');
 });
+
+// route logout
+Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');
 
 
 Route::middleware(['guest'])->group(function () {

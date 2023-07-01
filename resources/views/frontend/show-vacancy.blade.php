@@ -17,6 +17,9 @@
                             <h6 class="fw-bold">Please send us your CV to our email at:</h6>
                             <p class="card-text"><a href="mailto: {{ $vacancy->email }}">{{ $vacancy->email }}</a></p>
                         </div>
+                        <div class="card-footer text-body-secondary">
+                            {{ $vacancy->updated_at->diffForHumans() }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">

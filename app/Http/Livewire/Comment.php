@@ -19,10 +19,11 @@ class Comment extends Component
     public function render()
     {
         return view('livewire.comment', [
-            'comments' => ModelsComment::where('post_id', $this->post->id)
-            ->whereNull('comment_id')
-            ->latest()
-            ->get()
+            'comments' => ModelsComment::with('post')
+                ->where('post_id', $this->post->id)
+                ->whereNull('comment_id')
+                ->latest()
+                ->get(),
         ]);
     }
 
