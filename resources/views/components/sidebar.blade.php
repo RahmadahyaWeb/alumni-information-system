@@ -89,7 +89,7 @@
             <span class="menu-header-text">Data master Siforum</span>
         </li>
         <li class="menu-item {{ Request::is('forum*') ? 'active' : '' }}">
-            <a href="{{ route('siforum.index') }}" class="menu-link ">
+            <a href="{{ route('forum.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-chat"></i>
                 <div>Siforum</div>
             </a>

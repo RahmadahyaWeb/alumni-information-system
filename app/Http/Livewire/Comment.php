@@ -39,7 +39,7 @@ class Comment extends Component
             'body'    => $this->body
         ]);
 
-        return redirect()->route('forum.show', $this->post)->with('success', 'Comment was submitted!');
+        return redirect()->route('siforum.show', $this->post)->with('success', 'Comment was submitted!');
     }
 
     public function selectEdit($id)
@@ -64,13 +64,13 @@ class Comment extends Component
 
         $this->edit_comment_id = null;
 
-        return redirect()->route('forum.show', $this->post)->with('success', 'Comment was updated!');
+        return redirect()->route('siforum.show', $this->post)->with('success', 'Comment was updated!');
     }
 
     public function delete($id)
     {
         ModelsComment::where('id', $id)->delete();
-        return redirect()->route('forum.show', $this->post)->with('success', 'Comment was deleted!');
+        return redirect()->route('siforum.show', $this->post)->with('success', 'Comment was deleted!');
     }
 
     public function selectReply($id)
@@ -93,6 +93,6 @@ class Comment extends Component
             'comment_id'    => $comment->comment_id ? $comment->comment_id : $comment->id
         ]);
 
-        return redirect()->route('forum.show', $this->post)->with('success', 'Comment was submitted!');
+        return redirect()->route('siforum.show', $this->post)->with('success', 'Comment was submitted!');
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnusController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\JobController;
@@ -65,7 +66,7 @@ Route::post('/', RequestVacancyController::class)->name('vacancy.store');
 
 
 // route admin only
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['admin'])->group(function () {
     // route dashboard
     Route::get('/dashboard', function () {
         $departements = Departement::with('study')->withCount([
@@ -129,14 +130,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/users', UserController::class);
     // route vacancies
     Route::resource('/vacancies', VacancyController::class);
-    // route companies
-    Route::get('/users/company/account', [CompanyAccount::class, 'create'])->name('company.create');
-    Route::post('/users/company/account', [CompanyAccount::class, 'store'])->name('company.store');
     // route siforum
-    Route::get('/forum', [SiforumController::class, 'index'])->name('siforum.index');
-    Route::get('/forum/{post}', [SiforumController::class, 'edit'])->name('siforum.edit');
-    Route::put('/forum/{post}', [SiforumController::class, 'update'])->name('siforum.update');
-    Route::delete('/forum/delete/{post}', [SiforumController::class, 'destroy'])->name('siforum.destroy');
+    Route::get('/forum', [SiforumController::class, 'index'])->name('forum.index');
+    Route::get('/forum/{post}', [SiforumController::class, 'edit'])->name('forum.edit');
+    Route::put('/forum/{post}', [SiforumController::class, 'update'])->name('forum.update');
+    Route::delete('/forum/delete/{post}', [SiforumController::class, 'destroy'])->name('forum.destroy');
 });
 
 // route user
@@ -172,11 +170,12 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/{alumnus}', [ProfileController::class, 'changePassword'])->name('profile.update');
 
     // route post
-    Route::get('/Siforum', [PostController::class, 'index'])->name('forum.index');
-    Route::post('/Siforum', [PostController::class, 'store'])->name('forum.store');
-    Route::get('/Siforum/{post:slug}', [PostController::class, 'show'])->name('forum.show');
-    Route::put('/Siforum/{post}', [PostController::class, 'update'])->name('forum.update');
-    Route::delete('/Siforum//delete/{post}', [PostController::class, 'destroy'])->name('forum.destroy');
+    Route::get('/siforum', [PostController::class, 'index'])->name('siforum.index');
+    Route::post('/siforum', [PostController::class, 'store'])->name('siforum.store');
+    Route::get('/siforum/{post:slug}', [PostController::class, 'show'])->name('siforum.show');
+    Route::put('/siforum/{post}', [PostController::class, 'update'])->name('siforum.update');
+    Route::delete('/siforum/delete/{post:id}', [PostController::class, 'destroy'])->name('siforum.destroy');
+
 });
 
 // route logout

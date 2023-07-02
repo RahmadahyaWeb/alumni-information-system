@@ -15,10 +15,10 @@
             <div class="row g-4">
                 @if ($posts->count() > 0)
                     @foreach ($posts as $post)
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h6 class="card-title fw-bold">
+                                    <h6 class="card-title fw-4">
                                         {{ $post->title }}
                                     </h6>
                                     <p class="card-text text-secondary">
@@ -32,17 +32,23 @@
                                     </p>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="d-grid">
+                                    <div class="text-end">
+                                        <a href="{{ route('siforum.show', $post->slug) }}"
+                                            class="btn btn-sm btn-primary">
+                                            See thread
+                                        </a>
                                         @if ($post->user_id == Auth::id() || Auth::user()->role_id == 1)
                                             <a href="" class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#threadEdit{{ $post->id }}">Edit</a>
-                                            <a href="{{ route('forum.destroy', $post) }}" data-confirm-delete="true"
-                                                class="btn btn-sm btn-danger my-1">Delete</a>
+                                                data-bs-target="#threadEdit{{ $post->id }}">
+                                                Edit
+                                            </a>
+                                            <a href="{{ route('siforum.destroy', $post) }}"
+                                                class="btn btn-sm btn-danger" data-confirm-delete="true">
+                                                Delete
+                                            </a>
                                         @endif
                                         @include('frontend.edit-post')
-                                        <a href="{{ route('forum.show', $post->slug) }}"
-                                            class="btn btn-sm btn-primary">See
-                                            thread</a>
+
                                     </div>
                                 </div>
                             </div>

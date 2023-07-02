@@ -17,7 +17,7 @@ class PostCard extends Component
     {
         return view('livewire.post-card', [
             'posts' => Post::where('title', 'like', '%' . $this->search . '%')
-                ->latest()->simplePaginate(4),
+                ->latest()->simplePaginate(3),
         ]);
     }
 

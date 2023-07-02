@@ -9,7 +9,7 @@
                     <h1 class="modal-title fs-5" id="threadLabel">Create your own thread</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('forum.store') }}" method="POST">
+                <form action="{{ route('siforum.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

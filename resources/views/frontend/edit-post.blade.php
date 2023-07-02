@@ -6,7 +6,7 @@
                 <h1 class="modal-title fs-5" id="threadLabel">Edit your own thread</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('forum.update', $post) }}" method="POST">
+            <form action="{{ route('siforum.update', $post) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="modal-body">

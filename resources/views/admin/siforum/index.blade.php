@@ -36,10 +36,10 @@
                                             <i class="fas fa-cogs"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('siforum.edit', $post) }}" class="dropdown-item">
+                                            <a href="{{ route('forum.edit', $post) }}" class="dropdown-item">
                                                 Edit
                                             </a>
-                                            <a href="{{ route('siforum.destroy', $post) }}" class="dropdown-item"
+                                            <a href="{{ route('forum.destroy', $post) }}" class="dropdown-item"
                                                 data-confirm-delete="true">
                                                 Delete
                                             </a>

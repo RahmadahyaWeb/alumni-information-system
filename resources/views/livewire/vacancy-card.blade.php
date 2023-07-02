@@ -32,9 +32,10 @@
                                 </h6>
                                 <a href="{{ route('vacancy.detail', $vacancy->company_name) }}"
                                     class="card-link text-decoration-none">See
-                                    vacancy</a>
+                                    requirements</a>
                             </div>
                             <div class="card-footer text-body-secondary">
+                                Published
                                 {{ $vacancy->updated_at->diffForHumans() }}
                             </div>
                         </div>

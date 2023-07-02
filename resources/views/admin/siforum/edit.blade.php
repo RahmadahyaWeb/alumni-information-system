@@ -6,7 +6,7 @@
                 Form edit post
             </div>
             <div class="card-body">
-                <form action="{{ route('siforum.update', $post) }}" method="POST">
+                <form action="{{ route('forum.update', $post) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="row">
