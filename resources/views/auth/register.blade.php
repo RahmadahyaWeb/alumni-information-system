@@ -89,7 +89,17 @@
                                     </p>
                                 @enderror
                             </div>
-
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                    id="password" name="password" placeholder="Enter your company password"
+                                    value="{{ old('password') }}">
+                                @error('password')
+                                    <p class="invalid-feedback">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Register</button>
                             </div>
@@ -121,17 +131,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
 </body>
 
 </html>

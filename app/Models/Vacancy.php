@@ -10,4 +10,8 @@ class Vacancy extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function alumnus()
+    {
+        return $this->belongsToMany(Alumnus::class, 'alumnus_vacancy');
+    }
 }

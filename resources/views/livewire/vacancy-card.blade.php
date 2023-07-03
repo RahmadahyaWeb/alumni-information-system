@@ -3,9 +3,11 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <h3 class="text-center fw-bold">Start Your Career</h3>
-                <h6 class="text-center">Looking for employees? <a href="{{ route('vacancy.create') }}"
-                        class="text-decoration-none">Post your job
-                        vacancy now!</a></h6>
+                @guest
+                    <h6 class="text-center">Looking for employees? <a href="{{ route('register') }}"
+                            class="text-decoration-none">Post your job
+                            vacancy now!</a></h6>
+                @endguest
             </div>
         </div>
         <div class="row mb-3 g-2">

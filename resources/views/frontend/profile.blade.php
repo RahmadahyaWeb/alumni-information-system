@@ -158,6 +158,16 @@
                                             </div>
                                         @enderror
                                     </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="cv" class="form-label">CV</label>
+                                        <input type="file" id="cv" name="cv" accept="application/pdf"
+                                            class="form-control @error('cv') is-invalid @enderror">
+                                        @error('cv')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                     <div class="col-12 d-grid">
                                         <button type="submit" class="btn btn-primary">
                                             Save changes

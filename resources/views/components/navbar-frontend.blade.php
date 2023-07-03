@@ -29,12 +29,20 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             @if (Auth::user()->role_id == 1)
                                 <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="{{ route('siforum.index') }}">Siforum</a></li>
-                            @else
+                            @elseif (Auth::user()->role_id == 2)
                                 <li><a class="dropdown-item" href="{{ route('profile', Auth::user()->name) }}">Profile</a>
                                 </li>
                                 <li><a class="dropdown-item" href="{{ route('siforum.index') }}">Siforum</a></li>
                                 <li><a class="dropdown-item" href="{{ route('myevents') }}">My events</a></li>
+                                <li><a class="dropdown-item" href="{{ route('myapplies') }}">My job application</a></li>
+                            @else
+                                <li><a class="dropdown-item" href="{{ route('company.index') }}">Company
+                                        profile</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('company.vacancies') }}">Job vacancies</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('jobApplications') }}">Job applications</a>
+                                </li>
                             @endif
                             <li>
                                 <hr class="dropdown-divider">

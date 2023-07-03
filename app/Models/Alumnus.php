@@ -39,4 +39,9 @@ class Alumnus extends Model
     {
         return $this->belongsToMany(Event::class);
     }
+
+    public function vacancy()
+    {
+        return $this->belongsToMany(Vacancy::class, 'alumnus_vacancy');
+    }
 }

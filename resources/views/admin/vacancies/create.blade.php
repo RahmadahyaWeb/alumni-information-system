@@ -8,6 +8,7 @@
             <div class="card-body">
                 <form action="{{ route('vacancies.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                     <div class="row">
                         <div class="col-12 mb-3">
                             <label for="company_name" class="form-label">Company</label>

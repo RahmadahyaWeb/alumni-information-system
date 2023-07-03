@@ -14,8 +14,32 @@
                             <hr>
                             <h6 class="fw-bold">Requirements:</h6>
                             <div class="card-text">{!! $vacancy->requirements !!}</div>
-                            <h6 class="fw-bold">Please send us your CV to our email at:</h6>
-                            <p class="card-text"><a href="mailto: {{ $vacancy->email }}">{{ $vacancy->email }}</a></p>
+                            <h6 class="fw-bold">Contact for more information:</h6>
+                            <div class="card-text mb-3">
+                                <a class="text-decoration-none" href="mailto:{{ $vacancy->email }}">{{ $vacancy->email }}
+                                </a>
+                            </div>
+                            @auth
+                                @if (Auth::user()->role_id == 2)
+                                    @php
+                                        $hasJoined = DB::table('vacancies')
+                                            ->join('alumnus_vacancy', 'alumnus_vacancy.vacancy_id', '=', 'vacancies.id')
+                                            ->where('vacancies.id', '=', $vacancy->id)
+                                            ->where('alumnus_vacancy.alumnus_id', '=', Auth::user()->alumnus->id)
+                                            ->count();
+                                    @endphp
+                                    @if ($hasJoined == 0)
+                                        <a href="{{ route('apply', $vacancy->id) }}" class="btn btn-sm btn-primary">
+                                            Apply this position
+                                        </a>
+                                    @else
+                                        <a href="{{ route('unapply', $vacancy->id) }}" class="btn btn-sm btn-primary">
+                                            Unapply this position
+                                        </a>
+                                    @endif
+                                @endif
+
+                            @endauth
                         </div>
                         <div class="card-footer text-body-secondary">
                             {{ $vacancy->updated_at->diffForHumans() }}

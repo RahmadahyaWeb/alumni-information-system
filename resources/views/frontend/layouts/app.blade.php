@@ -25,6 +25,7 @@
     {{-- summernote --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     @livewireStyles
+
 </head>
 
 <body class="bg-body-tertiary" data-bs-theme="light" data-bs-spy="scroll" data-bs-target="#navbar">
@@ -83,7 +84,7 @@
     <script>
         $(document).ready(function() {
             // datatables
-            $('#example').DataTable({
+            $('#myTable').DataTable({
                 responsive: true,
                 "lengthChange": false
             });

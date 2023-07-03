@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Company
+class Alumnus
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Company
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role_id != 3) {
+        if (Auth::user()->role_id != 2) {
             abort(403);
         }
         return $next($request);

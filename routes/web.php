@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AlumnusController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\JobController;
@@ -11,7 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RequestVacancyController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SiforumController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserController;
@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 // route frontpage
 Route::get('/', function () {
@@ -54,16 +55,6 @@ Route::get('/vacancy/{vacancy:company_name}', function (Vacancy $vacancy) {
     $vacancies = Vacancy::latest()->limit(3)->get()->except($vacancy->id);
     return view('frontend.show-vacancy', compact('vacancy', 'vacancies'));
 })->name('vacancy.detail');
-
-// route create vacancy
-Route::get('/create/vacancy', function () {
-    return view('frontend.create-vacancy');
-})->name('vacancy.create');
-
-// route store vacancy
-Route::post('/', RequestVacancyController::class)->name('vacancy.store');
-
-
 
 // route admin only
 Route::middleware(['admin'])->group(function () {
@@ -138,7 +129,7 @@ Route::middleware(['admin'])->group(function () {
 });
 
 // route user
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['alumnus'])->group(function () {
 
     // route join event
     Route::get('/join/{id}', function ($id) {
@@ -164,6 +155,30 @@ Route::middleware(['auth'])->group(function () {
         return view('frontend.my-events', compact('myEvents'));
     })->name('myevents');
 
+    // route apply
+    Route::get('/apply/{id}', function ($id) {
+        $vacancy = Vacancy::find($id);
+        $vacancy->alumnus()->attach(Auth::user()->alumnus->id);
+        return back()->with('success', 'Successfully applied the job application!');
+    })->name('apply');
+
+    // route apply
+    Route::get('/unapply/{id}', function ($id) {
+        $vacancy = Vacancy::find($id);
+        $vacancy->alumnus()->detach(Auth::user()->alumnus->id);
+        return back()->with('success', 'Successfully canceled the job application!');
+    })->name('unapply');
+
+    // route my apply
+    Route::get('/my-applies', function () {
+        $myApplies = DB::table('vacancies')
+            ->join('alumnus_vacancy', 'alumnus_vacancy.vacancy_id', '=', 'vacancies.id')
+            ->where('alumnus_vacancy.alumnus_id', '=', Auth::user()->alumnus->id)
+            ->where('vacancies.status', '=', '1')
+            ->get();
+        return view('frontend.my-applies', compact('myApplies'));
+    })->name('myapplies');
+
     // route profile
     Route::get('/profile/{user:name}', [ProfileController::class, 'profile'])->name('profile');
     Route::post('/profile/{alumnus}', [ProfileController::class, 'update'])->name('profile.update');
@@ -175,8 +190,36 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siforum/{post:slug}', [PostController::class, 'show'])->name('siforum.show');
     Route::put('/siforum/{post}', [PostController::class, 'update'])->name('siforum.update');
     Route::delete('/siforum/delete/{post:id}', [PostController::class, 'destroy'])->name('siforum.destroy');
-
 });
+
+// route company
+Route::middleware(['company'])->group(function () {
+    // route company
+    Route::resource('/company', CompanyController::class);
+    Route::put('/company/change/{user:id}', [CompanyController::class, 'changeProfile'])->name('company.change');
+    // route company-vacancy
+    Route::get('/company-vacancies', function () {
+        $title = 'Delete Vacancy!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        return view('frontend.company-vacancy', [
+            'vacancies' => Vacancy::where('user_id', Auth::id())->get(),
+        ]);
+    })->name('company.vacancies');
+    // route job applications
+    Route::get('/job-applications', function () {
+        $jobApplications = DB::table('alumnus_vacancy')
+            ->join('alumni', 'alumni.id', '=', 'alumnus_vacancy.alumnus_id')
+            ->join('vacancies', 'vacancies.id', '=', 'alumnus_vacancy.vacancy_id')
+            ->where('vacancies.user_id', '=', Auth::id())
+            ->get();
+
+        return view('frontend.job-application', compact('jobApplications'));
+    })->name('jobApplications');
+    // route download cv
+    Route::get('/download/{cv}', [CompanyController::class, 'download'])->name('download');
+});
+
 
 // route logout
 Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');
@@ -186,4 +229,10 @@ Route::middleware(['guest'])->group(function () {
     // route login
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login');
+
+    // route register
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
+    Route::post('/register', [RegistrationController::class, 'register'])->name('register');
 });

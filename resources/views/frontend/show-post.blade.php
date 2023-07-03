@@ -15,13 +15,13 @@
                                 {{ $post->title }}
                             </h5>
                             <p class="card-text text-secondary">
-                                <small>{{ $post->user->name }}</small>
+                                {{ $post->user->name }}
                             </p>
                             <p class="card-text">
-                                <small>{{ $post->body }}</small>
+                                {{ $post->body }}
                             </p>
                             <p class="card-text text-secondary mt-0">
-                                <small>{{ $post->created_at->diffForHumans() }}</small>
+                                {{ $post->created_at->diffForHumans() }}
                             </p>
                         </div>
 

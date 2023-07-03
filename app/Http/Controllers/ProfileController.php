@@ -49,6 +49,16 @@ class ProfileController extends Controller
                 'job_id' => $request->job_id,
             ]);
         }
+
+        if ($request->hasFile('cv')) {
+            $cv = $request->file('cv');
+            $cv->storeAs('public/cv', $cv->hashName());
+            Storage::delete('public/cv/' . $alumnus->cv);
+            $alumnus->update([
+                'cv' => $cv->hashName()
+            ]);
+        }
+        
         User::where('alumnus_id', $alumnus->id)->update([
             'email' => $request->email,
         ]);

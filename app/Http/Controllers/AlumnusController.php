@@ -56,7 +56,8 @@ class AlumnusController extends Controller
             'company' => 'nullable',
             'title_of_final_task' => 'required',
             'photo' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'liaison_id' => 'required'
+            'liaison_id' => 'required',
+            'cv'    => 'required',
         ], $message = [
             'departement_id.required' => 'The departement field is required.',
             'study_id.required' => 'The study field is required.',
@@ -66,6 +67,8 @@ class AlumnusController extends Controller
 
         $image = $request->file('photo');
         $image->storeAs('public/alumni', $image->hashName());
+        $cv = $request->file('cv');
+        $cv->storeAs('public/cv', $cv->hashName());
 
         Alumnus::create([
             'name' => $request->name,
@@ -79,7 +82,8 @@ class AlumnusController extends Controller
             'company' => $request->company,
             'title_of_final_task' => $request->title_of_final_task,
             'photo' => $image->hashName(),
-            'liaison_id' => $request->liaison_id
+            'liaison_id' => $request->liaison_id,
+            'cv' => $cv->hashName()
         ]);
 
         return redirect()->route('alumni.index')->with('success', 'Alumnus was created!');
@@ -110,7 +114,7 @@ class AlumnusController extends Controller
      */
     public function update(Request $request, Alumnus $alumnus)
     {
-        $attributes = $request->validate([
+        $request->validate([
             'name' => 'required',
             'nim' => 'required|unique:alumni,nim,' . $alumnus->id,
             'gender' => 'required',
@@ -161,6 +165,15 @@ class AlumnusController extends Controller
                 'company' => $request->company,
                 'liaison_id' => $request->liaison_id,
                 'title_of_final_task' => $request->title_of_final_task,
+            ]);
+        }
+
+        if ($request->hasFile('cv')) {
+            $cv = $request->file('cv');
+            $cv->storeAs('public/cv', $cv->hashName());
+            Storage::delete('public/cv/' . $alumnus->cv);
+            $alumnus->update([
+                'cv' => $cv->hashName()
             ]);
         }
 

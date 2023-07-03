@@ -41,7 +41,8 @@ class VacancyController extends Controller
             'requirements' => 'required',
             'job_type' => 'required',
             'status' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'user_id' => 'required'
         ]);
 
         Vacancy::create($attributes);

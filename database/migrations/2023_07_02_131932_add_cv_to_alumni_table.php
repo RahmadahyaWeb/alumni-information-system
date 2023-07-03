@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alumnus_event', function (Blueprint $table) {
-            $table->foreignId('alumnus_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
-            $table->primary(['alumnus_id', 'event_id']);
+        Schema::table('alumni', function (Blueprint $table) {
+            $table->string('cv')->after('photo');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_alumnus_event');
+        Schema::table('alumni', function (Blueprint $table) {
+            //
+        });
     }
 };
