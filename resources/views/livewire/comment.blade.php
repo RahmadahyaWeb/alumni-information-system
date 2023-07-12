@@ -20,10 +20,9 @@
     @if ($comments->count() > 0)
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    Comments
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Comments</h5>
+                    <hr>
                     @foreach ($comments as $comment)
                         <h6 class="card-title">
                             {{ $comment->user->name }}

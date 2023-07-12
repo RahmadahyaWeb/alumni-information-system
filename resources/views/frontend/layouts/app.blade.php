@@ -25,7 +25,11 @@
     {{-- summernote --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     @livewireStyles
-
+    <style>
+        .action {
+            border: none !important;
+        }
+    </style>
 </head>
 
 <body class="bg-body-tertiary" data-bs-theme="light" data-bs-spy="scroll" data-bs-target="#navbar">

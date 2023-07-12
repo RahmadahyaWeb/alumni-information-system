@@ -28,10 +28,10 @@
                                         </a>
                                     </div>
 
-                                    <a href="{{ route('unapply', $vacancy->id) }}" class="btn btn-sm btn-primary">
-                                        Unapply this position
+                                    <a href="{{ route('unapply', $vacancy->id) }}" class="btn btn-primary">
+                                        Cancel the job application
                                     </a>
-
+                                    
                                 </div>
                             </div>
                         </div>

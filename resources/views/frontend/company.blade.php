@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col">
-                    <div class="card">
+                    <div class="card shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">
                                 Company Profile

@@ -6,11 +6,12 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <div class="card-header">
-                            Form create vacancy
-                        </div>
                         <form action="{{ route('company.store') }}" method="POST">
                             <div class="card-body">
+                                <h5 class="card-title">
+                                    Form create vacancy
+                                </h5>
+                                <hr>
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -59,10 +60,6 @@
                                             </div>
                                         @enderror
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
                                     <div class="col-12 d-md-flex justify-content-end">
                                         <div class="d-grid d-md-block">
                                             <button type="submit" class="btn btn-primary">Submit</button>

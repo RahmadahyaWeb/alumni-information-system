@@ -6,17 +6,18 @@
             <div class="row mb-5">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <div class="card-header">
+                        <div class="card-body">
                             <div class="row d-flex justify-content-center align-items-center">
-                                <div class="col-6">
-                                    Job Vacancy From Your Company
+                                <div class="col-8">
+                                    <h5 class="card-title m-0">
+                                        Job Vacancy From Your Company
+                                    </h5>
                                 </div>
-                                <div class="col-6 text-end">
-                                    <a href="{{ route('company.create') }}" class="btn btn-primary btn-sm">Create </a>
+                                <div class="col-4 text-end">
+                                    <a href="{{ route('company.create') }}" class="btn btn-primary">Create </a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
+                            <hr>
                             <table class="table responsive display table-bordered table-hover" id="myTable">
                                 <thead>
                                     <tr>
@@ -24,7 +25,7 @@
                                         <th>Position</th>
                                         <th>Job type</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,15 +41,28 @@
                                                     active
                                                 @endif
                                             </td>
-                                            <td>
-                                                <a href="{{ route('company.edit', $vacancy->id) }}"
-                                                    class="btn btn-sm btn-primary">
-                                                    Edit
-                                                </a>
-                                                <a href="{{ route('company.destroy', $vacancy->id) }}"
-                                                    data-confirm-delete="true" class="btn btn-sm btn-danger">
-                                                    Delete
-                                                </a>
+                                            <td class="text-center">
+                                                <div class="dropdown">
+                                                    <a class="btn action p-0 dropdown-toggle" href="#" role="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-gear-fill"></i>
+                                                    </a>
+
+                                                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                                                        <li>
+                                                            <a href="{{ route('company.edit', $vacancy->id) }}"
+                                                                class="dropdown-item">
+                                                                Edit
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ route('company.destroy', $vacancy->id) }}"
+                                                                data-confirm-delete="true" class="dropdown-item">
+                                                                Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

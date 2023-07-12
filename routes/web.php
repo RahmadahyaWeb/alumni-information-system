@@ -212,6 +212,7 @@ Route::middleware(['company'])->group(function () {
             ->join('alumni', 'alumni.id', '=', 'alumnus_vacancy.alumnus_id')
             ->join('vacancies', 'vacancies.id', '=', 'alumnus_vacancy.vacancy_id')
             ->where('vacancies.user_id', '=', Auth::id())
+            ->select('alumni.name', 'alumni.email', 'alumni.cv', 'alumni.gpas')
             ->get();
 
         return view('frontend.job-application', compact('jobApplications'));

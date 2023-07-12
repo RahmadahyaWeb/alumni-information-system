@@ -17,6 +17,7 @@
                             <p class="card-text text-secondary">
                                 {{ $post->user->name }}
                             </p>
+                            <hr>
                             <p class="card-text">
                                 {{ $post->body }}
                             </p>

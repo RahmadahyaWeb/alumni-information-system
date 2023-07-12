@@ -6,11 +6,12 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <div class="card-header">
-                            Form edit vacancy
-                        </div>
                         <form action="{{ route('company.update', $company->id) }}" method="POST">
                             <div class="card-body">
+                                <h5 class="card-title">
+                                    Form edit vacancy
+                                </h5>
+                                <hr>
                                 @csrf
                                 @method('put')
                                 <div class="row">
@@ -60,10 +61,6 @@
                                             </div>
                                         @enderror
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
                                     <div class="col-12 d-md-flex justify-content-end">
                                         <div class="d-grid d-md-block">
                                             <button type="submit" class="btn btn-primary">Save changes</button>
